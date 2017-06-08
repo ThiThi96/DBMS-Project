@@ -32,6 +32,10 @@ public class sinhvien_DeDaDKController implements Initializable  {
 	private Label lblTaiKhoan;
 	@FXML
 	private Button btnQuayLai;
+	@FXML
+	private Label maLop;
+	@FXML
+	private Label tenLop;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -107,6 +111,7 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		}
 		sinhvienNhomDeController display = Loader.getController();
 		display.setTextTenDn(lblTaiKhoan.getText());
+		display.setTextLop(maLop.getText(), tenLop.getText());
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnQuayLai.getScene().getWindow();
 		stage.setResizable(false);
@@ -116,5 +121,10 @@ public class sinhvien_DeDaDKController implements Initializable  {
 	
 	public void setTextTenDn(String ten){
 		 this.lblTaiKhoan.setText(ten);
+	}
+	
+	public void setTextLop(String ma, String ten){
+		 this.maLop.setText(ma);
+		 this.tenLop.setText(ten);
 	}
 }

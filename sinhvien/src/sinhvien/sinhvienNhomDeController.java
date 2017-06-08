@@ -244,6 +244,7 @@ public class sinhvienNhomDeController  implements Initializable {
 		}
 		sinhvien_DeDaDKController display = Loader.getController();
 		display.setTextTenDn(tendn.getText());
+		display.setTextLop(maLop.getText(), tenLop.getText());
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnXemDSDeDaDK.getScene().getWindow();
 		stage.setResizable(false);

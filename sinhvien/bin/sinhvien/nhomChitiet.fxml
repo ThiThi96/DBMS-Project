@@ -32,7 +32,7 @@
       </TableView>
       <Button fx:id="btnThemthanhvien" layoutX="682.0" layoutY="127.0" mnemonicParsing="false" onAction="#themthanhvienClicked" prefHeight="37.0" prefWidth="209.0" text="Thêm thành viên" />
       <Button fx:id="btnHoantat" layoutX="452.0" layoutY="489.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="178.0" text="Hoàn tất" />
-      <Button fx:id="btnQuayve" layoutX="713.0" layoutY="489.0" mnemonicParsing="false" onAction="#quaylaiClicked" prefHeight="37.0" prefWidth="178.0" text="Quay về" />
+      <Button fx:id="btnQuayve" layoutX="713.0" layoutY="489.0" mnemonicParsing="false" onAction="#quaylaiClicked" prefHeight="37.0" prefWidth="178.0" text="Quay lại" />
       <TextField fx:id="tenNhom" layoutX="297.0" layoutY="127.0" prefHeight="37.0" prefWidth="310.0">
          <font>
             <Font name="Times New Roman" size="20.0" />

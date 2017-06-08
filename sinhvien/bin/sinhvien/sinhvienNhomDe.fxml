@@ -19,28 +19,23 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   	 <children>
-                        <TableView fx:id="tableDeConHanDK" layoutX="169.0" layoutY="87.0" prefHeight="398.0" prefWidth="662.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                        <Label fx:id="lblDSDeConHanDK" layoutX="313.0" layoutY="48.0" text="DANH SÁCH ĐỀ CÒN HẠN ĐĂNG KÝ">
+                        <TableView fx:id="tableDeConHanDK" layoutX="169.0" layoutY="140.0" prefHeight="345.0" prefWidth="662.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" />
+                        <Label fx:id="lblDSDeConHanDK" layoutX="160.0" layoutY="92.0" text="DANH SÁCH ĐỀ CÒN HẠN ĐĂNG KÝ">
                            <font>
-                              <Font size="25.0" />
+                              <Font name="Times New Roman Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnDangKyDe" layoutX="550.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#dangKyDe_CLicked" text="Đăng ký " textAlignment="CENTER">
+                        <Button fx:id="btnDangKyDe" layoutX="525.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#dangKyDe_CLicked" prefHeight="31.0" prefWidth="134.0" text="Đăng ký " textAlignment="CENTER">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnQuayVeTC" layoutX="698.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#quaylaiClicked" text="Quay lại">
+                        <Button fx:id="btnQuayVeTC" layoutX="712.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#quaylaiClicked" prefHeight="31.0" prefWidth="128.0" text="Quay lại">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnXemDSDeDaDK" layoutX="23.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#xemDSDeDaDK_Clicked" text="Xem đề đã đăng ký">
+                        <Button fx:id="btnXemDSDeDaDK" layoutX="637.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#xemDSDeDaDK_Clicked" prefHeight="37.0" prefWidth="203.0" text="Xem đề đã đăng ký">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -56,7 +51,7 @@
                     <TableView fx:id="tableNhom" editable="false" layoutX="29.0" layoutY="57.0" prefHeight="400.0" prefWidth="900.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="80.0">
                       
                     </TableView>
-                        <Button fx:id="btnQuayve" layoutX="747.0" layoutY="475.0" mnemonicParsing="false" onAction="#quaylaiClicked" prefHeight="25.0" prefWidth="153.0" text="Quay về" AnchorPane.leftAnchor="747.0" AnchorPane.rightAnchor="100.0" />
+                        <Button fx:id="btnQuayve" layoutX="747.0" layoutY="475.0" mnemonicParsing="false" onAction="#quaylaiClicked" prefHeight="25.0" prefWidth="153.0" text="Quay lại" AnchorPane.leftAnchor="747.0" AnchorPane.rightAnchor="100.0" />
                         <Button fx:id="btnDangkynhom" layoutX="225.0" layoutY="475.0" mnemonicParsing="false" onAction="#dangkynhomClicked" prefHeight="25.0" prefWidth="154.0" text="Đăng ký nhóm" />
                         <Button fx:id="btnRutnhom" disable="true" layoutX="571.0" layoutY="475.0" mnemonicParsing="false" onAction="#rutnhomClicked" prefHeight="25.0" prefWidth="152.0" text="Rút nhóm" AnchorPane.leftAnchor="571.0" AnchorPane.rightAnchor="277.0" />
                         <Button fx:id="btnChitietnhom" disable="true" layoutX="400.0" layoutY="475.0" mnemonicParsing="false" onAction="#chitietnhomClicked" prefHeight="25.0" prefWidth="150.0" text="Chi tiết nhóm" />

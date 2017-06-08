@@ -35,7 +35,7 @@
 	 -fx-font-weight: bold;
 }
 
-#dangxuat:hover {
+#dangxuat:hover, #lblDangXuat:hover {
 	-fx-text-fill: blue;
 	-fx-underline: true;
 }
@@ -60,9 +60,9 @@
   -fx-alignment: CENTER;
 }
 
-#btnQuayve, #btnDangkynhom, #btnHoantat, #btnThemthanhvien, #btnRutnhom, #btnChitietnhom{
+#btnQuayve, #btnDangkynhom, #btnHoantat, #btnThemthanhvien, #btnRutnhom, #btnChitietnhom, #btnHuyDKDe, #btnQuayLai, #btnDangKyDe, #btnQuayVeTC, #btnXemDSDeDaDK{
 	-fx-font-family: "Times New Roman";
-	 -fx-font-size: 20px;
+	 -fx-font-size: 18px;
 	 -fx-font-weight: bold;
 }
 
