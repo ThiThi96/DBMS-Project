@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sinhvien.nhomChitietController">
+   <children>
+	    <Label fx:id="tendn" layoutX="670.0" layoutY="14.0" prefHeight="17.0" prefWidth="191.0" />
+	    <Label fx:id="dangxuat" layoutX="920.0" layoutY="14.0" text="Đăng xuất" />
+	    <ImageView fx:id="iconUser" fitHeight="27.0" fitWidth="38.0" layoutX="871.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+	       <image>
+	           <Image url="@user.png" />
+	       </image>
+	    </ImageView>
+	    <Label fx:id="maLop" layoutX="90.0" layoutY="14.0" />
+	    <Label fx:id="tenLop" layoutX="208.0" layoutY="14.0" />
+      <Line endX="900.0" layoutY="50.0" startX="-100.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" />
+      <Label layoutX="190.0" layoutY="134.0" text="Tên nhóm">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableNhom" layoutX="90.0" layoutY="207.0" prefHeight="239.0" prefWidth="701.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0">
+        
+      </TableView>
+      <Button fx:id="btnThemthanhvien" layoutX="682.0" layoutY="127.0" mnemonicParsing="false" onAction="#themthanhvienClicked" prefHeight="37.0" prefWidth="209.0" text="Thêm thành viên" />
+      <Button fx:id="btnHoantat" layoutX="452.0" layoutY="489.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="178.0" text="Hoàn tất" />
+      <Button fx:id="btnQuayve" layoutX="713.0" layoutY="489.0" mnemonicParsing="false" onAction="#quaylaiClicked" prefHeight="37.0" prefWidth="178.0" text="Quay về" />
+      <TextField fx:id="tenNhom" layoutX="297.0" layoutY="127.0" prefHeight="37.0" prefWidth="310.0">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font>
+      </TextField>
+      <Label fx:id="lableMaNhom" layoutX="190.0" layoutY="80.0" text="Mã nhóm" visible="false">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Label>
+      <TextField fx:id="textMaNhom" editable="false" layoutX="297.0" layoutY="76.0" prefHeight="25.0" prefWidth="310.0" visible="false">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></TextField>
+   </children>
+</AnchorPane>
