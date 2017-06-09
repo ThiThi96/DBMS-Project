@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="271.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.adminAddSubjectController">
+   <children>
+      <TextField fx:id="txtID" layoutX="161.0" layoutY="77.0" prefHeight="35.0" prefWidth="183.0" />
+      <TextField fx:id="txtName" layoutX="161.0" layoutY="149.0" prefHeight="35.0" prefWidth="183.0" />
+      <Label layoutX="40.0" layoutY="77.0" prefHeight="35.0" prefWidth="102.0" text="Mã môn học" />
+      <Label layoutX="40.0" layoutY="149.0" prefHeight="35.0" prefWidth="102.0" text="Tên môn học" />
+      <Button fx:id="btnOK" layoutX="275.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#createSubject" prefHeight="35.0" prefWidth="89.0" text="Xác nhận" />
+      <Button fx:id="btnBack" layoutX="161.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="35.0" prefWidth="89.0" text="Hủy bỏ" />
+      <Label fx:id="lblTitle" layoutX="133.0" layoutY="27.0" prefHeight="36.0" prefWidth="150.0" text="Tạo môn học">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
