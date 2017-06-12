@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="giaovien.themdeController">
+   <children>
+   	  <Label fx:id="tendn" layoutX="842.0" layoutY="14.0" text="User" />
+      <Label fx:id="dangxuat" layoutX="905.0" layoutY="14.0" text="Đăng xuất" />
+      <Label layoutX="42.0" layoutY="117.0" text="Mã môn:" />
+      <Label fx:id="maMon" layoutX="125.0" layoutY="117.0" text="CTT001" />
+      <Label layoutX="436.0" layoutY="144.0" text="DANH SÁCH ĐỀ" />
+      <TableView fx:id="tableDSDe" layoutX="79.0" layoutY="173.0" prefHeight="338.0" prefWidth="843.0">
+        <columns>
+          <TableColumn fx:id="maDe" prefWidth="146.0" text="Mã đề" />
+          <TableColumn fx:id="moTa" prefWidth="696.0" text="Mô tả" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnTaoDeMoi" layoutX="585.0" layoutY="547.0" mnemonicParsing="false" onAction="#chonTaoDeMoi" text="Tạo đề mới" />
+      <Button fx:id="btnThemDeChoMon" layoutX="710.0" layoutY="547.0" mnemonicParsing="false" onAction="#chonThemDeChoMon" text="Thêm đề cho môn" />
+      <Button fx:id="btnQuayLai" layoutX="886.0" layoutY="547.0" mnemonicParsing="false" onAction="#chonQuayLai" text="Quay lại" />
+   </children>
+</AnchorPane>
