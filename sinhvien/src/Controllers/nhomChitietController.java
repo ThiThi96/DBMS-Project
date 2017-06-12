@@ -1,4 +1,4 @@
-package sinhvien;
+package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
+import Models.Nhom;
+import Models.SvNhom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -114,16 +116,16 @@ public class nhomChitietController implements Initializable {
 	}
 	
 	public void setNhomTruong(String masv){
-		data.add(new SvNhom(masv, "Tên thằng đang đăng nhập lấy dưới csdl", true));
-		thanhVienThem.add(new SvNhom(masv, "Tên thằng đang đăng nhập lấy dưới csdl", true));
+		data.add(new SvNhom(masv, "Ten thang dang dang nhap lay duoi csdl", true));
+		thanhVienThem.add(new SvNhom(masv, "Ten tuong ung voi ma so sv nhap vao lay duoi csdl", true));
 		tableNhom.setItems(data);
 	}
 	
 	public void layThongTinNhom(String maNhom){
-		//Lấy thành viên nhóm dưới cơ sở dữ liệu lên
-		SvNhom s1 = new SvNhom("Sv1","Nguyễn Hoàng Anh", true );
-		SvNhom s2 = new SvNhom("Sv2","Trần Thu Hà",  false );
-		SvNhom s3 = new SvNhom("Sv3","Vũ Ngọc Bích",  false );
+		//Lay duoi co so du lieu len
+		SvNhom s1 = new SvNhom("Sv1","Nguyen Hoang Anh", true );
+		SvNhom s2 = new SvNhom("Sv2","Tran Thu Ha ",  false );
+		SvNhom s3 = new SvNhom("Sv3","Vo Ngoc Bich",  false );
 		
 		data.addAll(s1, s2, s3);
 		tableNhom.setItems(data);
@@ -132,7 +134,7 @@ public class nhomChitietController implements Initializable {
 	public void quaylaiClicked(){
 		Parent pane = null;
 		FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("sinhvienNhomDe.fxml"));
+    	Loader.setLocation(getClass().getResource("../Application/sinhvienNhomDe.fxml"));
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
@@ -146,14 +148,14 @@ public class nhomChitietController implements Initializable {
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnQuayve.getScene().getWindow();
 		stage.setResizable(false);
-		scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
 	}
 	
 	public void themthanhvienClicked(){
 		TextInputDialog dialog = new TextInputDialog("");		
 		dialog.getDialogPane().getStylesheets().add(
-				   getClass().getResource("sinhvien.css").toExternalForm());
+				   getClass().getResource("../Application/sinhvien.css").toExternalForm());
 		dialog.getDialogPane().getStyleClass().add("dialogThemthanhvien");
 		dialog.setTitle("Thêm thành viên");
 		dialog.setHeaderText("Nhập mã sinh viên");
@@ -162,9 +164,9 @@ public class nhomChitietController implements Initializable {
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
-				//query lấy tên dưới csdl
-			    data.add(new SvNhom(result.get(), "Tên tương ứng dưới csdl", false));
-			    thanhVienThem.add(new SvNhom(result.get(), "Tên tương ứng dưới csdl", false));
+				//query láº¥y tÃªn dÆ°á»›i csdl
+			    data.add(new SvNhom(result.get(), "Ten thang dang dang nhap lay duoi csdl", false));
+			    thanhVienThem.add(new SvNhom(result.get(), "Ten tuong ung lay duoi csdl", false));
 			    tableNhom.setItems(data);
 			    tableNhom.refresh();
 		}

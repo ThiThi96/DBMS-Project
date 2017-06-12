@@ -1,11 +1,13 @@
-package sinhvien;
+package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
+import Models.DeDaDK;
+import Models.Nhom;
+import Models.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +42,7 @@ public class sinhvien_DeDaDKController implements Initializable  {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		lblTaiKhoan.setAlignment(Pos.TOP_RIGHT);
-		// Táº¡o cÃ¡c cá»™t cá»§a báº£ng
+		// TÃ¡ÂºÂ¡o cÃƒÂ¡c cÃ¡Â»â„¢t cÃ¡Â»Â§a bÃ¡ÂºÂ£ng
 		TableColumn cMaDe = new TableColumn("Mã đề");
 		cMaDe.setMinWidth(100);
 		
@@ -70,7 +72,7 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		cDeadline.setCellValueFactory(new PropertyValueFactory<DeDaDK, Date>("deadLine"));
 		cGVPT.setCellValueFactory(new PropertyValueFactory<DeDaDK, User>("gvPhuTrach"));
 		
-		// Hiá»ƒn thá»‹ cÃ¡c dÃ²ng dá»¯ liá»‡u
+		// HiÃ¡Â»Æ’n thÃ¡Â»â€¹ cÃƒÂ¡c dÃƒÂ²ng dÃ¡Â»Â¯ liÃ¡Â»â€¡u
 	    ObservableList<DeDaDK> list = getDeDaDKList();
 	    tableDeDaDK.setItems(list);
 	 
@@ -80,8 +82,8 @@ public class sinhvien_DeDaDKController implements Initializable  {
 	
 	private ObservableList<DeDaDK> getDeDaDKList() {
 		return null;
-		// Danh sÃ¡ch cÃ¡c Ä�á»� Ä‘Ã£ Ä‘Äƒng kÃ½ cá»§a sinh viÃªn
-		// vÃ­ dá»¥: UserAccount user1 = new UserAccount(1L, "smith", "smith@gmail.com",  "Susan", "Smith", true);
+		// Danh sÃƒÂ¡ch cÃƒÂ¡c Ã„ï¿½Ã¡Â»ï¿½ Ã„â€˜ÃƒÂ£ Ã„â€˜Ã„Æ’ng kÃƒÂ½ cÃ¡Â»Â§a sinh viÃƒÂªn
+		// vÃƒÂ­ dÃ¡Â»Â¥: UserAccount user1 = new UserAccount(1L, "smith", "smith@gmail.com",  "Susan", "Smith", true);
 		
 		//ObservableList<DeDaDK> list = FXCollections.observableArrayList(user1, user2, user3);
 	    //return list;
@@ -102,7 +104,7 @@ public class sinhvien_DeDaDKController implements Initializable  {
 	public void quayLai_Clicked(){
 		Parent pane = null;
 		FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("sinhvienNhomDe.fxml"));
+    	Loader.setLocation(getClass().getResource("../Application/sinhvienNhomDe.fxml"));
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
@@ -115,7 +117,7 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnQuayLai.getScene().getWindow();
 		stage.setResizable(false);
-		scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
 	}
 	

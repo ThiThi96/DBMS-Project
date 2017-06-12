@@ -1,9 +1,11 @@
-package sinhvien;
+package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Models.DeMon;
+import Models.Nhom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -59,10 +61,10 @@ public class sinhvienNhomDeController  implements Initializable {
 	@FXML
 	private TableView<Nhom> tableNhom = new TableView<Nhom>();
 	
-	Nhom n1 = new Nhom("Nhom1","Hai con vịt", "sv1", 4 );
+	Nhom n1 = new Nhom("Nhom1","Hai con vit", "sv1", 4 );
 	Nhom n2 = new Nhom("Nhom2","Hai con heo", "sv2", 3 );
-	Nhom n3 = new Nhom("Nhom3","Hai con chó", "sv3", 2 );
-	Nhom n4 = new Nhom("Nhom4","Hai con gà", "sv4", 5);
+	Nhom n3 = new Nhom("Nhom3","Hai con cho", "sv3", 2 );
+	Nhom n4 = new Nhom("Nhom4","Hai con ga ", "sv4", 5);
 	
 	private final ObservableList<Nhom> data =
 		        FXCollections.observableArrayList(
@@ -78,27 +80,27 @@ public class sinhvienNhomDeController  implements Initializable {
 		tendn.setAlignment(Pos.TOP_RIGHT);
 		//data.addAll(n1, n2, n3, n4);
 		
-		TableColumn cManhom = new TableColumn("Mã nhóm");
+		TableColumn cManhom = new TableColumn("Ma nhom");
 		cManhom.setMinWidth(110);
 		cManhom.setMaxWidth(110);
 		cManhom.setCellValueFactory(
             new PropertyValueFactory<Nhom,String>("maNhom")
         );
 
-		TableColumn cTennhom = new TableColumn("Tên nhóm");
+		TableColumn cTennhom = new TableColumn("Ten nhom");
         cTennhom.setMinWidth(335);
         cTennhom.setMaxWidth(335);
         cTennhom.setCellValueFactory(
             new PropertyValueFactory<Nhom,String>("tenNhom")
         );
 
-        TableColumn cNhomtruong = new TableColumn("Nhóm trưởng");
+        TableColumn cNhomtruong = new TableColumn("Nhom truong");
         cNhomtruong.setMinWidth(150);
         cNhomtruong.setMaxWidth(150);
         cNhomtruong.setCellValueFactory(
             new PropertyValueFactory<Nhom,String>("nhomTruong")
         );
-        TableColumn cSoluong = new TableColumn("Số lượng thành viên");
+        TableColumn cSoluong = new TableColumn("So luong thanh vien");
         cSoluong.setMinWidth(200);
         cSoluong.setMaxWidth(200);
         cSoluong.setCellValueFactory(
@@ -144,7 +146,7 @@ public class sinhvienNhomDeController  implements Initializable {
 	public void quaylaiClicked(){
 		Parent pane = null;
 		FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("sinhvien-trangchu.fxml"));
+    	Loader.setLocation(getClass().getResource("../Application/sinhvien-trangchu.fxml"));
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
@@ -156,14 +158,14 @@ public class sinhvienNhomDeController  implements Initializable {
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnQuayve.getScene().getWindow();
 		stage.setResizable(false);
-		scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
 	}
 	
 	public void dangkynhomClicked(){
 		Parent pane = null;
 		FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("nhomChitiet.fxml"));
+    	Loader.setLocation(getClass().getResource("../Application/nhomChitiet.fxml"));
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
@@ -178,14 +180,14 @@ public class sinhvienNhomDeController  implements Initializable {
 		Stage stage = (Stage) btnDangkynhom.getScene().getWindow();
 		stage.setTitle("Đăng ký nhóm");
 		stage.setResizable(false);
-		scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
 	}
 	
 	public void chitietnhomClicked(){
 		Parent pane = null;
 		FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("nhomChitiet.fxml"));
+    	Loader.setLocation(getClass().getResource("../Application/nhomChitiet.fxml"));
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
@@ -203,14 +205,14 @@ public class sinhvienNhomDeController  implements Initializable {
 		Stage stage = (Stage) btnDangkynhom.getScene().getWindow();
 		stage.setTitle("Chi tiết nhóm");
 		stage.setResizable(false);
-		scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
 	}
 	
 	public void rutnhomClicked(){    	
     	Parent pane = null;
     	FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("sinhvienNhomDe.fxml"));
+    	Loader.setLocation(getClass().getResource("../Application/sinhvienNhomDe.fxml"));
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
@@ -224,7 +226,7 @@ public class sinhvienNhomDeController  implements Initializable {
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnRutnhom.getScene().getWindow();
 		stage.setResizable(false);
-		scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
 	}
 	
@@ -235,7 +237,7 @@ public class sinhvienNhomDeController  implements Initializable {
 	public void xemDSDeDaDK_Clicked(){
 		Parent pane = null;
     	FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("sinhvien_DeDaDK.fxml"));
+    	Loader.setLocation(getClass().getResource("../Application/sinhvien_DeDaDK.fxml"));
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
@@ -248,7 +250,7 @@ public class sinhvienNhomDeController  implements Initializable {
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnXemDSDeDaDK.getScene().getWindow();
 		stage.setResizable(false);
-		scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
 		
 	}

@@ -1,7 +1,7 @@
-package sinhvien;
+package Models;
 
-import sinhvien.De;
-import sinhvien.LoaiDA;
+import Models.De;
+import Models.LoaiDA;
 import java.util.Date;
 
 public class DeMon extends De{

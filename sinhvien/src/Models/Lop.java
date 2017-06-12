@@ -1,4 +1,4 @@
-package sinhvien;
+package Models;
 
 public class Lop {
 

@@ -1,4 +1,4 @@
-package sinhvien;
+package Models;
 
 import java.util.Date;
 

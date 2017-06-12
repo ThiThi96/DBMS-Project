@@ -1,4 +1,4 @@
-package sinhvien;
+package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.event.ChangeListener;
 
+import Models.Lop;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -68,7 +69,7 @@ public class sinhvienTrangchuController implements Initializable {
 	    	
 	    	Parent pane = null;
 	    	FXMLLoader Loader = new FXMLLoader();
-	    	Loader.setLocation(getClass().getResource("sinhvienNhomDe.fxml"));
+	    	Loader.setLocation(getClass().getResource("../Application/sinhvienNhomDe.fxml"));
 			try {
 				pane = Loader.load();
 			} catch (IOException e) {
@@ -81,7 +82,7 @@ public class sinhvienTrangchuController implements Initializable {
 			Scene scene = new Scene(pane);
 			Stage stage = (Stage) listLop.getScene().getWindow();
 			stage.setResizable(false);
-			scene.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());					        
+			scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 			stage.setScene(scene);
 	    });
 

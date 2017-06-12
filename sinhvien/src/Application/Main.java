@@ -1,7 +1,8 @@
-package sinhvien;
+package Application;
 	
 import java.util.ResourceBundle;
 
+import Controllers.sinhvienTrangchuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -19,7 +20,7 @@ public class Main extends Application {
 			Parent root = Loader.load();
 			sinhvienTrangchuController display = Loader.getController();
 			display.setTextTenDn("1412123");
-			primaryStage.setTitle("Sinh viÃªn");
+			primaryStage.setTitle("Sinh viên");
 			root.getStylesheets().add(getClass().getResource("sinhvien.css").toExternalForm());	
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setResizable(false);
