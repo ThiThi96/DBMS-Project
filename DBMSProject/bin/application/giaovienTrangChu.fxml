@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+   			fx:controller="Controllers.giaovienTrangChuController">
+   <children>
+      <Line endX="900.0" layoutX="140.0" layoutY="50.0" startX="-100.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" />
+      <ImageView fx:id="iconUser" fitHeight="30.0" fitWidth="30.0" layoutX="770.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@user.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="dangxuat" layoutX="965.0" layoutY="16.0" text="Đăng xuất">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="tenTK" layoutX="802.0" layoutY="17.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font name="Cambria" size="13.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listLop" layoutX="191.0" layoutY="104.0" prefHeight="440.0" prefWidth="700.0" />
+   </children>
+</AnchorPane>

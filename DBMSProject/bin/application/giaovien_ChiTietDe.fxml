@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.giaovien_ChiTietDeController">
+   <children>
+      <Line endX="900.0" layoutX="140.0" layoutY="50.0" startX="-100.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" />
+      <ImageView fx:id="iconUser" fitHeight="30.0" fitWidth="30.0" layoutX="770.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@user.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="dangxuat" layoutX="965.0" layoutY="16.0" text="Đăng xuất">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbMaDe" layoutX="120.0" layoutY="120.0" text="Mã đề" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbMaMon" layoutX="120.0" layoutY="160.0" text="Môn học" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbMoTa" layoutX="120.0" layoutY="200.0" text="Mô tả" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbDeadline" layoutX="120.0" layoutY="320.0" text="Deadline" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNgayBD" layoutX="120.0" layoutY="360.0" text="Ngày bắt đầu" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbSLSV_Nhom" layoutX="120.0" layoutY="400.0" text="SLSV/Nhóm" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbSLDKToiDa" layoutX="120.0" layoutY="440.0" text="SLĐK tối đa" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbSLDaDK" layoutX="120.0" layoutY="480.0" text="Tổng số đã ĐK" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMaDe" layoutX="261.0" layoutY="120.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="265.0" />
+      <TextField fx:id="txtMaMon" layoutX="261.0" layoutY="160.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="265.0" />
+      <TextField fx:id="txtSLSV_Nhom" layoutX="261.0" layoutY="400.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="265.0" />
+      <TextField fx:id="txtSLDKToiDa" layoutX="261.0" layoutY="440.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="265.0" />
+      <TextField fx:id="txtSLDaDK" layoutX="261.0" layoutY="480.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="265.0" />
+      <TextArea fx:id="txtMoTa" layoutX="261.0" layoutY="200.0" prefHeight="104.0" prefWidth="290.0" AnchorPane.leftAnchor="265.0" />
+      <Label fx:id="lbDSNhom" layoutX="601.0" layoutY="120.0" text="Danh sách nhóm">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableDS_Nhom" layoutX="640.0" layoutY="151.0" prefHeight="356.0" prefWidth="365.0" AnchorPane.rightAnchor="115.0" />
+      <Button fx:id="btnQuayVe" layoutX="846.0" layoutY="543.0" mnemonicParsing="false" onAction="#quayVe_Clicked" prefHeight="30.0" prefWidth="90.0" text="Quay về">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="tenTK" layoutX="802.0" layoutY="17.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font name="Cambria" size="13.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dpkDeadline" layoutX="265.0" layoutY="320.0" prefHeight="25.0" prefWidth="200.0" />
+      <DatePicker fx:id="dpkNgayBD" layoutX="265.0" layoutY="360.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label fx:id="lbMaLop" layoutX="70.0" layoutY="17.0">
+         <font>
+            <Font name="Cambria" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTenLop" layoutX="157.0" layoutY="17.0">
+         <font>
+            <Font name="Cambria" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
