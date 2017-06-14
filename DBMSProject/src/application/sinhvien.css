@@ -51,7 +51,7 @@
 	-fx-font-size: 20px;
 }
 
-#tableNhom{
+#tableNhom, #tableDS_SV{
 	 -fx-font-family: "Times New Roman";
 	 -fx-font-size: 20px;
 }
@@ -63,6 +63,10 @@
 
 
 #tableNhom .table-column {
+  -fx-alignment: CENTER;
+}
+
+#tableDS_SV .table-column {
   -fx-alignment: CENTER;
 }
 

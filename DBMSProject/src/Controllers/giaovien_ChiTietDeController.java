@@ -5,6 +5,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTimePicker;
+
+import Models.DeMon;
 import Models.Nhom;
 import Models.User;
 import application.FxDialogs;
@@ -18,7 +22,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,13 +46,17 @@ public class giaovien_ChiTietDeController implements Initializable {
 	@FXML
 	private TextField txtMaDe = new TextField();
 	@FXML
-	private TextField txtMaMon = new TextField();
+	private TextField txtLoaiDe = new TextField();
 	@FXML
 	private TextArea txtMoTa = new TextArea();
 	@FXML
-	private DatePicker dpkDeadline = new DatePicker();
+	private JFXDatePicker ngayBD;
 	@FXML
-	private DatePicker dpkNgayBD = new DatePicker();
+	private JFXDatePicker ngayDeadline;
+	@FXML
+	private JFXTimePicker gioBD;
+	@FXML
+	private JFXTimePicker gioDeadline;
 	@FXML
 	private TextField txtSLSV_Nhom = new TextField();
 	@FXML
@@ -62,55 +69,37 @@ public class giaovien_ChiTietDeController implements Initializable {
 	private Button luuThayDoi;
 	@FXML
 	private TableView<Nhom> tableDS_Nhom = new TableView<Nhom>();
+	@FXML
+	private TableView<User> tableDS_SV = new TableView<User>();
 	
 	private User user;
+	private DeMon deLuu;
+	
 	Nhom n1 = new Nhom("Nhom1","Hai con vit", "sv1", 4 );
 	Nhom n2 = new Nhom("Nhom2","Hai con heo", "sv2", 3 );
 	Nhom n3 = new Nhom("Nhom3","Hai con cho", "sv3", 2 );
 	Nhom n4 = new Nhom("Nhom4","Hai con ga", "sv4", 5);
 	
-	private final ObservableList<Nhom> data =
+	User u1 = new User("SV1","Thang thu nhat", "", "","","" );
+	User u2 = new User("SV2", "Ten dua thu 2",  "", "","","" );
+	User u3 = new User("Sv3","Ten dua thu 3", "", "","","" );
+	User u4 = new User("SV4","Ten dua thu 4",  "", "","","" );
+	
+	//Nhom dang ky de ma giao vien quan ly
+	private final ObservableList<Nhom> data_Nhom =
 		        FXCollections.observableArrayList(
 		        n1, n2, n3, n4
 		        );   
 	
+	//SV dang ky de ma giao vien quan ly
+	private final ObservableList<User> data_SV =
+	        FXCollections.observableArrayList(
+	        u1, u2, u3, u4
+	        );   
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		tenTK.setAlignment(Pos.TOP_RIGHT);
-
-		dpkDeadline.setValue(LocalDate.of(2017, 6, 30));
-		dpkNgayBD.setValue(LocalDate.of(2017, 5, 25));
-			
-		TableColumn cManhom = new TableColumn("Mã nhóm");
-		cManhom.setMinWidth(90);
-		cManhom.setMaxWidth(90);
-		cManhom.setCellValueFactory(
-            new PropertyValueFactory<Nhom,String>("maNhom")
-        );
-
-		TableColumn cTennhom = new TableColumn("Tên nhóm");
-        cTennhom.setMinWidth(200);
-        cTennhom.setMaxWidth(200);
-        cTennhom.setCellValueFactory(
-            new PropertyValueFactory<Nhom,String>("tenNhom")
-        );
-
-        TableColumn cNhomtruong = new TableColumn("Nhóm trưởng");
-        cNhomtruong.setMinWidth(100);
-        cNhomtruong.setMaxWidth(100);
-        cNhomtruong.setCellValueFactory(
-            new PropertyValueFactory<Nhom,String>("nhomTruong")
-        );
-        TableColumn cSoluong = new TableColumn("Số lượng thành viên");
-        cSoluong.setMinWidth(150);
-        cSoluong.setMaxWidth(150);
-        cSoluong.setCellValueFactory(
-            new PropertyValueFactory<Nhom,String>("soLuong")
-        );
-		
-        tableDS_Nhom.getColumns().addAll(cManhom, cTennhom, cNhomtruong, cSoluong);
-        
-        tableDS_Nhom.setItems(data);
 		
 	}
 	
@@ -144,28 +133,70 @@ public class giaovien_ChiTietDeController implements Initializable {
 		this.tenTK.setText(u.getUserName());
 	}
 	
-	public void setTextMaDe(String maDe){
-		this.txtMaDe.setText(maDe);
-	}
-	
-	public void setTextMaMon(String maMon){
-		this.txtMaMon.setText(maMon);
-	}
-	
-	public void setTextMoTa(String moTa){
-		this.txtMoTa.setText(moTa);
-	}
-	
-	public void setTextSLSVNhom(String slSVNhom){
-		this.txtSLSV_Nhom.setText(slSVNhom);
-	}
-	
-	public void setTextslDKToiDa(String slDKToiDa){
-		this.txtSLDKToiDa.setText(slDKToiDa);
-	}
-	
-	public void setTextSLDaDK(String slDaDK){
-		this.txtSLDaDK.setText(slDaDK);
+	public void setDe(DeMon de){
+		this.txtMaDe.setText(de.getDe());
+		this.txtLoaiDe.setText(de.getLoaiDeHien());
+		this.txtMoTa.setText(de.getMoTa());
+		this.txtSLSV_Nhom.setText(Integer.toString(de.getSlSVNhom()));
+		this.txtSLDKToiDa.setText(Integer.toString(de.getSlDangKyTD()));
+		this.txtSLDaDK.setText(Integer.toString(de.getSlDangKy()));
+		this.ngayBD.setPromptText(de.getNgayBDDangKy());
+		this.ngayDeadline.setPromptText(de.getDeadline());
+		deLuu = de;
+		
+		if(de.isLoaiDe()){
+			TableColumn cMasv = new TableColumn("MSSV");
+			
+			cMasv.setMinWidth(150);
+			cMasv.setMaxWidth(150);
+			cMasv.setCellValueFactory(
+	            new PropertyValueFactory<User,String>("userID")
+	        );
+
+			TableColumn cTensv = new TableColumn("Tên sinh viên");
+			cTensv.setMinWidth(390);
+			cTensv.setMaxWidth(390);
+			cTensv.setCellValueFactory(
+	            new PropertyValueFactory<User,String>("userName")
+	        );
+			
+	        tableDS_SV.setVisible(true);
+	        tableDS_SV.getColumns().addAll(cMasv, cTensv);
+	        tableDS_SV.setItems(data_SV);
+	   
+		}
+		else{
+			TableColumn cManhom = new TableColumn("Mã nhóm");
+			cManhom.setMinWidth(90);
+			cManhom.setMaxWidth(90);
+			cManhom.setCellValueFactory(
+	            new PropertyValueFactory<Nhom,String>("maNhom")
+	        );
+
+			TableColumn cTennhom = new TableColumn("Tên nhóm");
+	        cTennhom.setMinWidth(200);
+	        cTennhom.setMaxWidth(200);
+	        cTennhom.setCellValueFactory(
+	            new PropertyValueFactory<Nhom,String>("tenNhom")
+	        );
+
+	        TableColumn cNhomtruong = new TableColumn("Nhóm trưởng");
+	        cNhomtruong.setMinWidth(100);
+	        cNhomtruong.setMaxWidth(100);
+	        cNhomtruong.setCellValueFactory(
+	            new PropertyValueFactory<Nhom,String>("nhomTruong")
+	        );
+	        TableColumn cSoluong = new TableColumn("Số lượng thành viên");
+	        cSoluong.setMinWidth(150);
+	        cSoluong.setMaxWidth(150);
+	        cSoluong.setCellValueFactory(
+	            new PropertyValueFactory<Nhom,String>("soLuong")
+	        );
+			
+	        tableDS_Nhom.setVisible(true);
+	        tableDS_Nhom.getColumns().addAll(cManhom, cTennhom, cNhomtruong, cSoluong);
+	        tableDS_Nhom.setItems(data_Nhom);
+		}
 	}
 	
 	public void dangxuatClicked(){

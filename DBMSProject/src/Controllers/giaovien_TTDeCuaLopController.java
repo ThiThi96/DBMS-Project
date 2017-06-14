@@ -49,9 +49,9 @@ public class giaovien_TTDeCuaLopController implements Initializable{
 	private User user;
 
 	DeMon dm1 = new DeMon("De001", "CTT001", "Cuoi ky", true, "Hom nay la mot ngay khong dep troi gi ca", 20, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Hoang Anh Tu");
-	DeMon dm2 = new DeMon("De002", "CTT001", "Giua ky", true, "Troi khong nang khong mo hoho", 10, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Trần Minh Triết" );
+	DeMon dm2 = new DeMon("De002", "CTT001", "Giua ky", false, "Troi khong nang khong mo hoho", 10, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Trần Minh Triết" );
 	DeMon dm3 = new DeMon("De003", "CTT001", "Bai tap", true, "Chan qua di mat ", 20, 10, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Hồng" );
-	DeMon dm4 = new DeMon("De004", "CTT001", "Bai tap", true, "Troi oi la troi", 10, 8, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Nhung" );
+	DeMon dm4 = new DeMon("De004", "CTT001", "Bai tap", false, "Troi oi la troi", 10, 8, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Nhung" );
 	
 	private final ObservableList<DeMon> listDe =
 	        FXCollections.observableArrayList(
@@ -59,6 +59,7 @@ public class giaovien_TTDeCuaLopController implements Initializable{
 	        );   
 	
 	String maDeSel, maMonSel, loaiDASel, moTaSel, ngayBDSel, deadlineSel;
+	DeMon deSelect;
 	Boolean loaiDeSel;
 	Integer slDKToiDaSel, slDaDKSel, slSVNhomSel;
 
@@ -128,17 +129,7 @@ public class giaovien_TTDeCuaLopController implements Initializable{
 		tableCT_De.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
             	this.btnChiTietDe.setDisable(false);
-            	maDeSel = tableCT_De.getSelectionModel().getSelectedItem().getDe();
-            	maMonSel = tableCT_De.getSelectionModel().getSelectedItem().getMon();
-            	loaiDASel = tableCT_De.getSelectionModel().getSelectedItem().getLoaiDA();
-            	loaiDeSel = tableCT_De.getSelectionModel().getSelectedItem().isLoaiDe();
-            	moTaSel = tableCT_De.getSelectionModel().getSelectedItem().getMoTa();
-            	slDKToiDaSel = tableCT_De.getSelectionModel().getSelectedItem().getSlDangKyTD();
-            	slDaDKSel = tableCT_De.getSelectionModel().getSelectedItem().getSlDangKy();
-            	slSVNhomSel = tableCT_De.getSelectionModel().getSelectedItem().getSlSVNhom();
-            	ngayBDSel = tableCT_De.getSelectionModel().getSelectedItem().getNgayBDDangKy();
-            	deadlineSel = tableCT_De.getSelectionModel().getSelectedItem().getDeadline();
-            	
+            	deSelect = newSelection;
             }
         });
 	
@@ -156,31 +147,20 @@ public class giaovien_TTDeCuaLopController implements Initializable{
 		try {
 			pane = Loader.load();
 		} catch (IOException e) {
+			System.out.println("Sao lai null nua roi huhuhuhu");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		giaovien_ChiTietDeController display = Loader.getController();
 		display.setTextLop(lbMaLop.getText(), lbTenLop.getText());
 		display.setTextTenDn(user);
-		display.setTextMaDe(maDeSel);
-		display.setTextMaMon(maMonSel);
-		display.setTextMoTa(moTaSel);
-		String s1 = String.valueOf(slSVNhomSel);
-		display.setTextSLSVNhom(s1);
-		String s2 = String.valueOf(slDKToiDaSel);
-		display.setTextslDKToiDa(s2);
-		String s3 = String.valueOf(slDaDKSel);
-		display.setTextSLDaDK(s3);
+		display.setDe(deSelect);
 		
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnChiTietDe.getScene().getWindow();
 		stage.setTitle("Chi tiết đề");
 		stage.setResizable(false);					        
 		stage.setScene(scene);
-	}
-	
-	public void tenTK_Clicked(){
-		
 	}
 	
 	public void dangxuatClicked(){

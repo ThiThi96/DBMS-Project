@@ -76,9 +76,9 @@
          </font></Label>
       <Button fx:id="btnThemDe" layoutX="427.0" layoutY="539.0" mnemonicParsing="false" onAction="#chonThemDe" prefHeight="32.0" prefWidth="125.0" text="Thêm đề" />
       <Button fx:id="btnQuayLai" layoutX="608.0" layoutY="539.0" mnemonicParsing="false" onAction="#chonQuayLai" prefHeight="32.0" prefWidth="125.0" text="Quay lại" />
-      <JFXTimePicker fx:id="gioBD" layoutX="357.0" layoutY="418.0" prefHeight="28.0" prefWidth="132.0" />
-      <JFXTimePicker fx:id="gioDeadline" layoutX="357.0" layoutY="476.0" prefHeight="28.0" prefWidth="132.0" />
-      <JFXDatePicker fx:id="ngayBD" layoutX="533.0" layoutY="418.0" prefHeight="28.0" prefWidth="240.0" />
-      <JFXDatePicker fx:id="ngayDeadline" layoutX="533.0" layoutY="476.0" prefHeight="28.0" prefWidth="240.0" />
+      <JFXTimePicker fx:id="gioBD" defaultColor="#00178f" layoutX="357.0" layoutY="418.0" prefHeight="28.0" prefWidth="132.0" />
+      <JFXTimePicker fx:id="gioDeadline" defaultColor="#00058f" layoutX="357.0" layoutY="476.0" prefHeight="28.0" prefWidth="132.0" />
+      <JFXDatePicker fx:id="ngayBD" defaultColor="#00208f" layoutX="533.0" layoutY="418.0" prefHeight="28.0" prefWidth="240.0" />
+      <JFXDatePicker fx:id="ngayDeadline" defaultColor="#001a8f" layoutX="533.0" layoutY="476.0" prefHeight="28.0" prefWidth="240.0" />
    </children>
 </AnchorPane>
