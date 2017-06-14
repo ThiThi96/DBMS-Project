@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.signInController">
    <children>
       <AnchorPane layoutX="250.0" layoutY="123.0" prefHeight="385.0" prefWidth="564.0" style="-fx-background-color: #89cff0;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="123.0">
          <children>
@@ -21,21 +20,26 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="178.0" layoutY="83.0" prefHeight="44.0" prefWidth="273.0">
+            <TextField fx:id="username" layoutX="178.0" layoutY="83.0" prefHeight="44.0" prefWidth="273.0">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </TextField>
-            <Button layoutX="315.0" layoutY="260.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="Đăng nhập">
+            <Button fx:id="btnSignin" layoutX="315.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnSigninClicked" prefHeight="37.0" prefWidth="129.0" text="Đăng nhập">
                <font>
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <PasswordField layoutX="178.0" layoutY="171.0" prefHeight="25.0" prefWidth="273.0">
+            <PasswordField fx:id="pass" layoutX="178.0" layoutY="171.0" prefHeight="25.0" prefWidth="273.0">
                <font>
                   <Font size="20.0" />
                </font>
             </PasswordField>
+            <Button fx:id="btnExit" onAction="#btnEixitClicked" layoutX="178.0" layoutY="260.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="Thoát">
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

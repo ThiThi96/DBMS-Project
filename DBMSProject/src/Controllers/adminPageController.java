@@ -1,6 +1,7 @@
 package Controllers;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -57,6 +58,8 @@ public class adminPageController implements Initializable {
 	   @FXML
 	   private Label uName;
 	   @FXML
+	   private Label logOut;
+	   @FXML
 	   private TableView<Subject> tblSubject;
 	   @FXML
 	   private TableColumn<Subject, String> subIDCol;
@@ -103,7 +106,25 @@ public class adminPageController implements Initializable {
 	   };
 	   
 	   public void updateUser(MouseEvent e){
-		   
+		   Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../application/suaThongTinCaNhan.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Stage stage = (Stage) uName.getScene().getWindow();
+			suaThongTinCaNhanController display = Loader.getController();
+			display.setTextTenDn(user);
+			display.setPreviousPage(stage);
+			Stage stage1 = new Stage();
+			Scene scene = new Scene(pane);
+			stage1.setResizable(false);				        
+			stage1.setScene(scene);
+			stage.hide();
+			stage1.show();
 	   };
 
 	   
@@ -175,11 +196,23 @@ public class adminPageController implements Initializable {
 	   
 	   public void lgOut(MouseEvent e){
 		   if (FxDialogs.showConfirm("Thông báo", "Bạn có muốn đăng xuất??", 1, "Có", "Không").equals(FxDialogs.YES)) {
-			    Node source = (Node) e.getSource();
+			   Parent pane = null;
+		    	FXMLLoader Loader = new FXMLLoader();
+		    	Loader.setLocation(getClass().getResource("../Application/signIn.fxml"));
+				try {
+					pane = Loader.load();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Scene scene = new Scene(pane); 
+				Node source = (Node) e.getSource();
 			    Stage stage = (Stage) source.getScene().getWindow();
-			    stage.close();
+			    stage.setResizable(false);				        
+				stage.setScene(scene);
 		   }
 	   };
+	   
 
 	   public void setUser(User u)
 	   {
@@ -194,7 +227,7 @@ public class adminPageController implements Initializable {
 		
 		ObservableList<User> list = getUserList();
 		
-
+		
 		tblUser.setItems(list);
 		
 		ObservableList<Subject> list1 = getSubjectList();
@@ -214,5 +247,4 @@ public class adminPageController implements Initializable {
 		});
 		
 	}
-	   
 }

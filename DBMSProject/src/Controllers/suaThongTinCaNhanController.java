@@ -1,16 +1,21 @@
 package Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Models.SvNhom;
+import Models.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
@@ -22,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class suaThongTinCaNhanController implements Initializable {
@@ -56,7 +62,9 @@ public class suaThongTinCaNhanController implements Initializable {
 	@FXML
 	private Button btnDoiMatKhau;
 	
+	private Stage previousPage;
 	
+	private User user;
 	
 	
 	@Override
@@ -64,28 +72,39 @@ public class suaThongTinCaNhanController implements Initializable {
 		// TODO Auto-generated method stub
 		tendn.setAlignment(Pos.TOP_RIGHT);
 		
-		
 	}
 	
-	public void anKhoa(){
-		lbKhoa.setVisible(false);
-		textKhoa.setVisible(false);
+	public void hienKhoa(){
+		lbKhoa.setVisible(true);
+		textKhoa.setVisible(true);
 	}
 	
-	public void setTextTenDn(String ten){
-		 this.tendn.setText(ten);
+	public void setTextTenDn(User u){
+		user = u;
+		this.tendn.setText(u.getUserName());
+		textKhoa.setText(u.getUserYear());
+		textMaNguoiDung.setText(u.getUserID());
+		textKhoa.setText(u.getUserYear());
+		textHoTen.setText(u.getUserName());
+		textMatKhau.setText("**************");
+		textSDT.setText(u.getUserTel());;
+		textEmail.setText(u.getUserEmail());;
+		textDiaChi.setText(u.getUserAdd());;
 	}
 	
+	public void setPreviousPage(Stage page){
+		previousPage = page;
+	}
 	
 	public void btnDoiMatKhauClick(){
 		// Create the custom dialog.
 		Dialog<Pair<String, String>> dialog = new Dialog<>();
-		dialog.setTitle("Đổi mật khẩu");
-		dialog.setHeaderText("Đổi mật khẩu");
+		dialog.setTitle("Doi mat khau");
+		dialog.setHeaderText("Doi mat khau");
 
 		// Set the button types.
-		ButtonType loginButtonType = new ButtonType("Hoàn tất", ButtonData.OK_DONE);
-		ButtonType loginButtonCancel = new ButtonType("Hủy", ButtonData.CANCEL_CLOSE);
+		ButtonType loginButtonType = new ButtonType("Hoan tat", ButtonData.OK_DONE);
+		ButtonType loginButtonCancel = new ButtonType("Huy", ButtonData.CANCEL_CLOSE);
 		dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, loginButtonCancel);
 
 		// Create the username and password labels and fields.
@@ -95,13 +114,13 @@ public class suaThongTinCaNhanController implements Initializable {
 		grid.setPadding(new Insets(20, 150, 10, 10));
 
 		PasswordField passCu = new PasswordField();
-		passCu.setPromptText("Mật khẩu cũ");
+		passCu.setPromptText("Mat khau cu");
 		PasswordField passMoi = new PasswordField();
-		passMoi.setPromptText("Mật khẩu mới");
+		passMoi.setPromptText("Mat khau moi");
 
-		grid.add(new Label("Nhập mật khẩu cũ:"), 0, 0);
+		grid.add(new Label("Nhap mat khau cu:"), 0, 0);
 		grid.add(passCu, 1, 0);
-		grid.add(new Label("Nhập mật khẩu mới:"), 0, 1);
+		grid.add(new Label("Nhap mat khau moi:"), 0, 1);
 		grid.add(passMoi, 1, 1);
 
 		// Enable/Disable login button depending on whether a username was entered.
@@ -134,8 +153,15 @@ public class suaThongTinCaNhanController implements Initializable {
 		Optional<Pair<String, String>> result = dialog.showAndWait();
 
 		result.ifPresent(pass -> {
-		    System.out.println("Cũ = " + pass.getKey() + ", Mới = " + pass.getValue());
+		    System.out.println("CÅ© = " + pass.getKey() + ", Má»›i = " + pass.getValue());
 		});
+	}
+	
+	public void btnQuayVeClicked(){
+		Stage stage = (Stage) btnQuayVe.getScene().getWindow();
+		stage.setResizable(false);
+		stage.close();
+		previousPage.show();
 	}
 	
 }

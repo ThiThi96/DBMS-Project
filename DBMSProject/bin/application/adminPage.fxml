@@ -55,7 +55,6 @@
                               </TableColumn>
                           </columns>
                         </TableView>
-                        <Button fx:id="btnBack" layoutX="813.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="40.0" prefWidth="125.0" text="Quay về" />
                         <Button fx:id="btnLock" layoutX="644.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#deactiveUser" prefHeight="40.0" prefWidth="138.0" text="Khóa tài khoản" />
                         <Button fx:id="btnAdd" layoutX="465.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#addUser" prefHeight="40.0" prefWidth="145.0" text="Thêm người dùng" />
                         <Label layoutX="696.0" layoutY="29.0" onMouseClicked="#lgOut" prefHeight="35.0" prefWidth="35.0" AnchorPane.bottomAnchor="536.0" AnchorPane.leftAnchor="696.0" AnchorPane.rightAnchor="269.0" AnchorPane.topAnchor="29.0">
@@ -65,7 +64,8 @@
                                     <Image url="@User.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Label>
+                           </graphic>
+                        </Label>
                         <Label fx:id="uName" layoutX="751.0" layoutY="30.0" onMouseClicked="#updateUser" prefHeight="40.0" text="Username" />
                         <Label fx:id="logOut" layoutX="869.0" layoutY="29.0" onMouseClicked="#lgOut" prefHeight="35.0" prefWidth="35.0">
                            <graphic>
@@ -98,7 +98,6 @@
                             </TableColumn>
                           </columns>
                         </TableView>
-                        <Button fx:id="btnBack2" layoutX="816.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="40.0" prefWidth="135.0" text="Quay lại" />
                         <Button fx:id="updateSub" layoutX="657.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#updateSubject" prefHeight="40.0" prefWidth="127.0" text="Sửa" />
                         <Button fx:id="deleteSub" layoutX="505.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#deleteSubject" prefHeight="40.0" prefWidth="116.0" text="Hủy môn" />
                         <Button fx:id="openSub" layoutX="359.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#openSubject" prefHeight="40.0" prefWidth="108.0" text="Mở môn" />

@@ -23,13 +23,13 @@
 	 -fx-font-size: 16px;
 }
 
-#tendn, #lblTaiKhoan {
+#tendn, #lblTaiKhoan, #tenTK {
 	 -fx-font-family: "Times New Roman";
 	 -fx-font-size: 16px;
 	 
 }
 
-#maLop,#tenLop{
+#maLop,#tenLop, #lbMaLop, #lbTenLop{
 	 -fx-font-family: "Times New Roman";
 	 -fx-font-size: 25px;
 	 -fx-font-weight: bold;
@@ -56,11 +56,35 @@
 	 -fx-font-size: 20px;
 }
 
+#tableCT_De, #tableDS_Nhom, #tableDSDe, #tableDeDaDK, #tableDeConHanDK{
+	 -fx-font-family: "Times New Roman";
+	 -fx-font-size: 16px;
+}
+
+
 #tableNhom .table-column {
   -fx-alignment: CENTER;
 }
 
-#btnQuayve, #btnDangkynhom, #btnHoantat, #btnThemthanhvien, #btnRutnhom, #btnChitietnhom, #btnHuyDKDe, #btnQuayLai, #btnDangKyDe, #btnQuayVeTC, #btnXemDSDeDaDK{
+
+#tableCT_De .table-column {
+  -fx-alignment: CENTER;
+}
+
+#tableDS_Nhom .table-column {
+  -fx-alignment: CENTER;
+}
+
+#tableDSDe .table-column {
+  -fx-alignment: CENTER;
+}
+
+
+
+#btnQuayve, #btnDangkynhom, #btnHoantat, #btnThemthanhvien, #btnRutnhom, #btnChitietnhom, #btnHuyDKDe, 
+#btnQuayLai, #btnDangKyDe, #btnQuayVeTC, #btnXemDSDeDaDK, #btnQuayVe, #btnThemDe, #btnChiTietDe,
+#btnTaoDeMoi, #btnThemDeChoMon, #btnTaoDe
+{
 	-fx-font-family: "Times New Roman";
 	 -fx-font-size: 18px;
 	 -fx-font-weight: bold;

@@ -9,6 +9,8 @@ import java.util.Vector;
 
 import Models.Nhom;
 import Models.SvNhom;
+import Models.User;
+import application.FxDialogs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class nhomChitietController implements Initializable {
@@ -55,6 +58,7 @@ public class nhomChitietController implements Initializable {
 	@FXML
 	private TableView<SvNhom> tableNhom;
 	
+	private User user;
 	private Vector<SvNhom> thanhVienThem = new Vector<SvNhom>();
 	
 	private final ObservableList<SvNhom> data =
@@ -67,14 +71,14 @@ public class nhomChitietController implements Initializable {
 		tendn.setAlignment(Pos.TOP_RIGHT);
 		tenNhom.setFocusTraversable(false);
 		
-		TableColumn cMasv = new TableColumn("Mã sinh viên");
+		TableColumn cMasv = new TableColumn("MSSV");
 		cMasv.setCellValueFactory(
 	            new PropertyValueFactory<Nhom,String>("maSv")
 	        );
 		cMasv.setMinWidth(200);
 		cMasv.setMaxWidth(200);
 		
-		TableColumn cTenSv = new TableColumn("Tên sinh viên");
+		TableColumn cTenSv = new TableColumn("Tên sinh vien");
 		cTenSv.setCellValueFactory(
 	            new PropertyValueFactory<Nhom,String>("tenSv")
 	        );
@@ -97,8 +101,9 @@ public class nhomChitietController implements Initializable {
 		 this.tenLop.setText(ten);
 	}
 	
-	public void setTextTenDn(String ten){
-		 this.tendn.setText(ten);
+	public void setTextTenDn(User u){
+		user = u;
+		this.tendn.setText(u.getUserName());
 	}
 	
 	public void disableEditTenNhom(){
@@ -131,6 +136,24 @@ public class nhomChitietController implements Initializable {
 		tableNhom.setItems(data);
 	}
 	
+	public void dangxuatClicked(){
+		if (FxDialogs.showConfirm("Thông báo", "Bạn có muốn đăng xuất??", 1, "Có", "Không").equals(FxDialogs.YES)) {
+			Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../Application/signIn.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(pane);
+			Stage stage = (Stage) dangxuat.getScene().getWindow();
+			stage.setResizable(false);				        
+			stage.setScene(scene);
+	   }
+	}
+	
 	public void quaylaiClicked(){
 		Parent pane = null;
 		FXMLLoader Loader = new FXMLLoader();
@@ -142,11 +165,12 @@ public class nhomChitietController implements Initializable {
 			e.printStackTrace();
 		}
 		sinhvienNhomDeController display = Loader.getController();
-		display.setTextTenDn(tendn.getText());
+		display.setTextTenDn(user);
 		display.setTextLop(maLop.getText(), tenLop.getText());
 		display.setNhomDefault();
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnQuayve.getScene().getWindow();
+		stage.setTitle("Sinh viên");
 		stage.setResizable(false);
 		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
@@ -158,17 +182,41 @@ public class nhomChitietController implements Initializable {
 				   getClass().getResource("../Application/sinhvien.css").toExternalForm());
 		dialog.getDialogPane().getStyleClass().add("dialogThemthanhvien");
 		dialog.setTitle("Thêm thành viên");
-		dialog.setHeaderText("Nhập mã sinh viên");
+		dialog.setHeaderText("Nhập MSSV");
 		dialog.getDialogPane().setPrefSize(300, 180);
 		
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
-				//query láº¥y tÃªn dÆ°á»›i csdl
+				//query lây duoi csdll
 			    data.add(new SvNhom(result.get(), "Ten thang dang dang nhap lay duoi csdl", false));
 			    thanhVienThem.add(new SvNhom(result.get(), "Ten tuong ung lay duoi csdl", false));
 			    tableNhom.setItems(data);
 			    tableNhom.refresh();
 		}
 	}
+	
+	public void updateUser(MouseEvent e){
+		   Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../application/suaThongTinCaNhan.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Stage stage = (Stage) iconUser.getScene().getWindow();
+			suaThongTinCaNhanController display = Loader.getController();
+			display.setTextTenDn(user);
+			display.setPreviousPage(stage);
+			display.hienKhoa();
+			Stage stage1 = new Stage();
+			Scene scene = new Scene(pane);
+			stage1.setResizable(false);			
+			stage1.setTitle("Cập nhật thông tin cá nhân");
+			stage1.setScene(scene);
+			stage.hide();
+			stage1.show();
+	   };
 }

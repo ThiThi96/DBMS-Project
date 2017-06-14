@@ -1,27 +1,29 @@
 package Models;
 
 public class Mon {
-	private String maMon;
-	private String tenMon;
-	private boolean tinhTrang;
-	
-	public String getMaMon() {
-		return maMon;
-	}
-	public void setMaMon(String maMon) {
-		this.maMon = maMon;
-	}
-	public String getTenMon() {
-		return tenMon;
-	}
-	public void setTenMon(String tenMon) {
-		this.tenMon = tenMon;
-	}
-	public boolean isTinhTrang() {
-		return tinhTrang;
-	}
-	public void setTinhTrang(boolean tinhTrang) {
-		this.tinhTrang = tinhTrang;
-	}
 
+    private String maLop;
+    private String tenLop;
+
+    public Mon(String maLop, String tenLop) {
+        this.maLop = maLop;
+        this.tenLop = tenLop;
+    }
+
+    public String getMalop() {
+        return maLop;
+    }
+
+    public void setMalop(String maLop) {
+        this.maLop = maLop;
+    }
+
+    public String getTenlop() {
+        return tenLop;
+    }
+
+    public void setTenlop(String tenLop) {
+        this.tenLop = tenLop;
+    }
+    
 }

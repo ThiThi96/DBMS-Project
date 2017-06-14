@@ -2,10 +2,16 @@ package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Models.DeMon;
 import Models.Nhom;
+import Models.User;
+import application.FxDialogs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +21,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -22,6 +30,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class sinhvienNhomDeController  implements Initializable {
@@ -61,16 +70,37 @@ public class sinhvienNhomDeController  implements Initializable {
 	@FXML
 	private TableView<Nhom> tableNhom = new TableView<Nhom>();
 	
+	private User user;
+	
+	
 	Nhom n1 = new Nhom("Nhom1","Hai con vit", "sv1", 4 );
 	Nhom n2 = new Nhom("Nhom2","Hai con heo", "sv2", 3 );
 	Nhom n3 = new Nhom("Nhom3","Hai con cho", "sv3", 2 );
-	Nhom n4 = new Nhom("Nhom4","Hai con ga ", "sv4", 5);
+	Nhom n4 = new Nhom("Nhom4","Hai con gaÂ ", "sv4", 5);
 	
+	DeMon dm1 = new DeMon("De001", "CTT001", "Cuoi ky", false, "Hom nay la mot ngay khong dep troi gi ca", 20, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Hoang Anh Tu");
+	DeMon dm2 = new DeMon("De002", "CTT001", "Giua ky", true, "Troi khong nang khong mo hoho", 10, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Trần Minh Triết" );
+	DeMon dm3 = new DeMon("De003", "CTT001", "Bai tap", false, "Chan qua di mat ", 20, 10, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Hồng" );
+	DeMon dm4 = new DeMon("De004", "CTT001", "Bai tap", true, "Troi oi la troi", 10, 8, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Nhung" );
+	
+	//Nhom ma thang dang nhap lam nhom truong
+	ObservableList<Nhom> nhomTruongCua = 
+		    FXCollections.observableArrayList(
+		    n3, n4
+		    );
+	
+	//Nhom
 	private final ObservableList<Nhom> data =
 		        FXCollections.observableArrayList(
 		        n1, n2, n3, n4
 		        );   
+	//De
+	private final ObservableList<DeMon> data_de =
+	        FXCollections.observableArrayList(
+	        dm1, dm2, dm3, dm4
+	        );   
 	
+	DeMon deSelect;
 	String maNhomSelect, tenNhomSelect, nhomTruongSelect;
 	int soLuongSelect;
 	
@@ -78,7 +108,6 @@ public class sinhvienNhomDeController  implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		tendn.setAlignment(Pos.TOP_RIGHT);
-		//data.addAll(n1, n2, n3, n4);
 		
 		TableColumn cManhom = new TableColumn("Ma nhom");
 		cManhom.setMinWidth(110);
@@ -123,6 +152,54 @@ public class sinhvienNhomDeController  implements Initializable {
             	//System.out.println(maNhom + "\n" + tenNhom + "\n" + nhomTruong + "\n" + soLuong);
             }
         });
+        
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        TableColumn cMaDe = new TableColumn("Ma de");
+		cMaDe.setMinWidth(70);
+		cMaDe.setMaxWidth(70);
+		
+		TableColumn cMoTa = new TableColumn("Mo ta");
+		cMoTa.setMinWidth(500);
+		cMoTa.setMaxWidth(500);
+		
+		TableColumn cLoaiDA = new TableColumn("Loai do an");
+		cLoaiDA.setMinWidth(100);
+		cLoaiDA.setMaxWidth(100);
+		
+		TableColumn cLoaiDe = new TableColumn("Loai de");
+		cLoaiDe.setMinWidth(85);
+		cLoaiDe.setMaxWidth(85);
+		
+		TableColumn cNgaybd = new TableColumn("Ngay bd");
+		cNgaybd.setMinWidth(100);
+		cNgaybd.setMaxWidth(100);
+		
+		TableColumn cGVPT = new TableColumn("Giao vien phu trach");
+		cGVPT.setMinWidth(100);
+		cGVPT.setMaxWidth(100);
+		
+		TableColumn cDeadline = new TableColumn("Deadline");
+		cDeadline.setMinWidth(100);
+		cDeadline.setMaxWidth(100);
+		
+		cMaDe.setCellValueFactory(new PropertyValueFactory<DeMon, String>("de"));
+		cMoTa.setCellValueFactory(new PropertyValueFactory<DeMon, String>("moTa"));
+		cLoaiDA.setCellValueFactory(new PropertyValueFactory<DeMon, Byte >("loaiDA"));
+		cLoaiDe.setCellValueFactory(new PropertyValueFactory<DeMon, String >("loaiDeHien"));
+		cNgaybd.setCellValueFactory(new PropertyValueFactory<DeMon, String>("ngayBDDangKy"));
+		cDeadline.setCellValueFactory(new PropertyValueFactory<DeMon, Date>("deadline"));
+		cGVPT.setCellValueFactory(new PropertyValueFactory<DeMon, User>("giaoVienPhuTrach"));
+		
+	    tableDeConHanDK.setItems(data_de);
+	 
+	    tableDeConHanDK.getColumns().addAll(cMaDe, cMoTa, cLoaiDA, cLoaiDe, cGVPT, cNgaybd, cDeadline);
+	    tableDeConHanDK.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+            	this.btnDangKyDe.setDisable(false);
+            	deSelect = newSelection;
+            }
+        });
 	}
 	
 	public void setTextLop(String ma, String ten){
@@ -130,8 +207,9 @@ public class sinhvienNhomDeController  implements Initializable {
 		 this.tenLop.setText(ten);
 	}
 	
-	public void setTextTenDn(String ten){
-		 this.tendn.setText(ten);
+	public void setTextTenDn(User u){
+		user = u;
+		this.tendn.setText(u.getUserName());
 	}
 	
 	public void disableButton(){
@@ -154,9 +232,10 @@ public class sinhvienNhomDeController  implements Initializable {
 			e.printStackTrace();
 		}
 		sinhvienTrangchuController display = Loader.getController();
-		display.setTextTenDn(tendn.getText());
+		display.setTextTenDn(user);
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnQuayve.getScene().getWindow();
+		stage.setTitle("Sinh viên");
 		stage.setResizable(false);
 		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
@@ -173,7 +252,7 @@ public class sinhvienNhomDeController  implements Initializable {
 			e.printStackTrace();
 		}
 		nhomChitietController display = Loader.getController();
-		display.setTextTenDn(tendn.getText());
+		display.setTextTenDn(user);
 		display.setTextLop(maLop.getText(), tenLop.getText());
 		display.setNhomTruong(tendn.getText());
 		Scene scene = new Scene(pane);
@@ -195,7 +274,7 @@ public class sinhvienNhomDeController  implements Initializable {
 			e.printStackTrace();
 		}
 		nhomChitietController display = Loader.getController();
-		display.setTextTenDn(tendn.getText());
+		display.setTextTenDn(user);
 		display.setTextLop(maLop.getText(), tenLop.getText());
 		display.disableEditTenNhom();
 		display.setTenNhom(tenNhomSelect);
@@ -221,7 +300,7 @@ public class sinhvienNhomDeController  implements Initializable {
 		}
 		sinhvienNhomDeController display = Loader.getController();
 		display.setTextLop(maLop.getText(), tenLop.getText());
-		display.setTextTenDn(tendn.getText());
+		display.setTextTenDn(user);
 		display.setNhomDefault();
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnRutnhom.getScene().getWindow();
@@ -231,7 +310,26 @@ public class sinhvienNhomDeController  implements Initializable {
 	}
 	
 	public void dangKyDe_CLicked(){
-		
+		if(deSelect.getLoaiDeHien().compareTo("Nhóm")==0){
+			List<String> choices = new ArrayList<>();
+			for(int i=0;i<nhomTruongCua.size(); i++)
+				choices.add(nhomTruongCua.get(i).getMaNhom());
+
+			ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
+			dialog.setTitle("Chon nhom");
+			dialog.setHeaderText("Chon nhom muon dang ky de nay");
+
+			// Traditional way to get the response value.
+			Optional<String> result = dialog.showAndWait();
+			if (result.isPresent()){
+			    System.out.println("Your choice: " + result.get());
+			}
+			//Tien hanh dang ky de cho nhom
+    	}            		
+    	else{
+    		
+    		//Tien hanh dang ky de cho ca nhan
+    	}
 	}
 	
 	public void xemDSDeDaDK_Clicked(){
@@ -245,21 +343,56 @@ public class sinhvienNhomDeController  implements Initializable {
 			e.printStackTrace();
 		}
 		sinhvien_DeDaDKController display = Loader.getController();
-		display.setTextTenDn(tendn.getText());
+		display.setTextTenDn(user);
 		display.setTextLop(maLop.getText(), tenLop.getText());
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnXemDSDeDaDK.getScene().getWindow();
+		stage.setTitle("Danh sách đề đã đăng ký");
 		stage.setResizable(false);
 		scene.getStylesheets().add(getClass().getResource("../Application/sinhvien.css").toExternalForm());					        
 		stage.setScene(scene);
-		
 	}
 	
-	public void tendn_Clicked(){
-		
+	public void dangxuatClicked(){
+		if (FxDialogs.showConfirm("Thông báo", "Bạn có muốn đăng xuất??", 1, "Có", "Không").equals(FxDialogs.YES)) {
+			Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../Application/signIn.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(pane);
+			Stage stage = (Stage) dangxuat.getScene().getWindow();
+			stage.setTitle("Đăng nhập");
+			stage.setResizable(false);				        
+			stage.setScene(scene);
+	   }
 	}
 	
-	public void dangXuat_Clicked(){
-		
-	}
+	public void updateUser(MouseEvent e){
+		   Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../application/suaThongTinCaNhan.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Stage stage = (Stage) iconUser.getScene().getWindow();
+			suaThongTinCaNhanController display = Loader.getController();
+			display.setTextTenDn(user);
+			display.setPreviousPage(stage);
+			display.hienKhoa();
+			Stage stage1 = new Stage();
+			Scene scene = new Scene(pane);
+			stage1.setResizable(false);				        
+			stage1.setScene(scene);
+			stage.setTitle("Cập nhật thông tin cá nhân");
+			stage.hide();
+			stage1.show();
+	   };
 }

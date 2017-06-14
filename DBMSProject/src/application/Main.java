@@ -13,7 +13,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass()
-	                   .getResource("suaThongTinCaNhan.fxml"));
+	                   .getResource("signIn.fxml"));
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("Đăng nhập");
 			primaryStage.setScene(new Scene(root));

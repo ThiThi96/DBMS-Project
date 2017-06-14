@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Models.Nhom;
+import Models.User;
+import application.FxDialogs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +26,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class giaovien_ChiTietDeController implements Initializable {
@@ -38,48 +41,33 @@ public class giaovien_ChiTietDeController implements Initializable {
 	@FXML
 	private Label lbTenLop;
 	@FXML
-	private Label lbMaDe;
-	@FXML
 	private TextField txtMaDe = new TextField();
-	@FXML
-	private Label lbMon;
 	@FXML
 	private TextField txtMaMon = new TextField();
 	@FXML
-	private Label lbMoTa;
-	@FXML
 	private TextArea txtMoTa = new TextArea();
-	@FXML
-	private Label lbDeadline;
 	@FXML
 	private DatePicker dpkDeadline = new DatePicker();
 	@FXML
-	private Label lbNgayBD;
-	@FXML
 	private DatePicker dpkNgayBD = new DatePicker();
-	@FXML
-	private Label lbSLSV_Nhom;
 	@FXML
 	private TextField txtSLSV_Nhom = new TextField();
 	@FXML
-	private Label lbSLDKToiDa;
-	@FXML
 	private TextField txtSLDKToiDa = new TextField();
 	@FXML
-	private Label lbSLDaDK;
-	@FXML
 	private TextField txtSLDaDK = new TextField();
-	
 	@FXML
 	private Button btnQuayVe;
 	@FXML
-	private Label lbDSNhom;
+	private Button luuThayDoi;
 	@FXML
 	private TableView<Nhom> tableDS_Nhom = new TableView<Nhom>();
-	Nhom n1 = new Nhom("Nhom1","Hai con vịt", "sv1", 4 );
+	
+	private User user;
+	Nhom n1 = new Nhom("Nhom1","Hai con vit", "sv1", 4 );
 	Nhom n2 = new Nhom("Nhom2","Hai con heo", "sv2", 3 );
-	Nhom n3 = new Nhom("Nhom3","Hai con chó", "sv3", 2 );
-	Nhom n4 = new Nhom("Nhom4","Hai con gà", "sv4", 5);
+	Nhom n3 = new Nhom("Nhom3","Hai con cho", "sv3", 2 );
+	Nhom n4 = new Nhom("Nhom4","Hai con ga", "sv4", 5);
 	
 	private final ObservableList<Nhom> data =
 		        FXCollections.observableArrayList(
@@ -129,17 +117,19 @@ public class giaovien_ChiTietDeController implements Initializable {
 	public void quayVe_Clicked(ActionEvent event){
 		Parent pane = null;
 		FXMLLoader Loader = new FXMLLoader();
-    	Loader.setLocation(getClass().getResource("giaovien_TTDe.fxml"));
+    	Loader.setLocation(getClass().getResource("../application/giaovien_TTDe.fxml"));
 		try {
 			pane = Loader.load();
-		} catch (IOException e) {
+		} catch (IOException e){
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		giaovien_TTDeCuaLopController display = Loader.getController();
-		display.setTextTenDn(tenTK.getText());
+		display.setTextLop(lbMaLop.getText(), lbTenLop.getText());
+		display.setTextTenDn(user);
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnQuayVe.getScene().getWindow();
+		stage.setTitle("Giáo viên");
 		stage.setResizable(false);					        
 		stage.setScene(scene);
 	}
@@ -149,8 +139,9 @@ public class giaovien_ChiTietDeController implements Initializable {
 		 this.lbTenLop.setText(ten);
 	}
 	
-	public void setTextTenDn(String ten){
-		 this.tenTK.setText(ten);
+	public void setTextTenDn(User u){
+		user = u;
+		this.tenTK.setText(u.getUserName());
 	}
 	
 	public void setTextMaDe(String maDe){
@@ -177,8 +168,47 @@ public class giaovien_ChiTietDeController implements Initializable {
 		this.txtSLDaDK.setText(slDaDK);
 	}
 	
+	public void dangxuatClicked(){
+		if (FxDialogs.showConfirm("Thông báo", "Bạn có muốn đăng xuất??", 1, "Có", "Không").equals(FxDialogs.YES)) {
+			Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../Application/signIn.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(pane);
+			Stage stage = (Stage) dangxuat.getScene().getWindow();
+			stage.setTitle("Đăng nhập");
+			stage.setResizable(false);				        
+			stage.setScene(scene);
+	   }
+	}
 	
-	
+	public void updateUser(MouseEvent e){
+		   Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../application/suaThongTinCaNhan.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Stage stage = (Stage) iconUser.getScene().getWindow();
+			suaThongTinCaNhanController display = Loader.getController();
+			display.setTextTenDn(user);
+			display.setPreviousPage(stage);
+			Stage stage1 = new Stage();
+			Scene scene = new Scene(pane);
+			stage1.setResizable(false);				        
+			stage1.setScene(scene);
+			stage1.setTitle("Cập nhật thông tin cá nhân");
+			stage.hide();
+			stage1.show();
+	   };
 }
 
 
