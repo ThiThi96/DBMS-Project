@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -57,6 +58,8 @@ public class nhomChitietController implements Initializable {
 	private Button btnThemthanhvien;
 	@FXML
 	private TableView<SvNhom> tableNhom;
+	@FXML
+	private ComboBox<String> delay;
 	
 	private User user;
 	private Vector<SvNhom> thanhVienThem = new Vector<SvNhom>();
@@ -70,7 +73,7 @@ public class nhomChitietController implements Initializable {
 		// TODO Auto-generated method stub
 		tendn.setAlignment(Pos.TOP_RIGHT);
 		tenNhom.setFocusTraversable(false);
-		
+		delay.setValue("No delay");
 		TableColumn cMasv = new TableColumn("MSSV");
 		cMasv.setCellValueFactory(
 	            new PropertyValueFactory<Nhom,String>("maSv")

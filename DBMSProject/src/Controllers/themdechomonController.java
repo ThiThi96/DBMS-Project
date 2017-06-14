@@ -68,12 +68,15 @@ public class themdechomonController implements Initializable {
 	private Button btnQuayLai;
 	@FXML
 	private ImageView iconUser;
+	@FXML
+	private ComboBox<String> delay;
 	
 	private User user;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ObservableList<LoaiDA> list1 = getLoaiDAList();
 		tendn.setAlignment(Pos.TOP_RIGHT);
+		delay.setValue("No delay");
 		loaiDA.setItems(list1);
 		loaiDA.getSelectionModel().select(0);
 		ObservableList<LoaiDe> list2 = getLoaiDeList();

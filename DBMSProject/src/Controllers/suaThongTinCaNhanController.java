@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import Models.SvNhom;
 import Models.User;
+import application.FxDialogs;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -61,6 +63,8 @@ public class suaThongTinCaNhanController implements Initializable {
 	private Button btnQuayVe;
 	@FXML
 	private Button btnDoiMatKhau;
+	@FXML
+	private ComboBox<String> delay;
 	
 	private Stage previousPage;
 	
@@ -71,7 +75,7 @@ public class suaThongTinCaNhanController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		tendn.setAlignment(Pos.TOP_RIGHT);
-		
+		delay.setValue("No delay");
 	}
 	
 	public void hienKhoa(){
@@ -117,11 +121,15 @@ public class suaThongTinCaNhanController implements Initializable {
 		passCu.setPromptText("Mat khau cu");
 		PasswordField passMoi = new PasswordField();
 		passMoi.setPromptText("Mat khau moi");
+		ComboBox del = new ComboBox();
+		del.setValue("No delay");
+		del.getItems().addAll("No delay", "Delay");
 
 		grid.add(new Label("Nhap mat khau cu:"), 0, 0);
 		grid.add(passCu, 1, 0);
 		grid.add(new Label("Nhap mat khau moi:"), 0, 1);
 		grid.add(passMoi, 1, 1);
+		grid.add(del, 1, 2);
 
 		// Enable/Disable login button depending on whether a username was entered.
 		Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
@@ -153,7 +161,7 @@ public class suaThongTinCaNhanController implements Initializable {
 		Optional<Pair<String, String>> result = dialog.showAndWait();
 
 		result.ifPresent(pass -> {
-		    System.out.println("CÅ© = " + pass.getKey() + ", Má»›i = " + pass.getValue());
+		    System.out.println("Old pass = " + pass.getKey() + ", New pass = " + pass.getValue());
 		});
 	}
 	
@@ -162,6 +170,25 @@ public class suaThongTinCaNhanController implements Initializable {
 		stage.setResizable(false);
 		stage.close();
 		previousPage.show();
+	}
+	
+	public void dangxuatClicked(){
+		if (FxDialogs.showConfirm("Thông báo", "Bạn có muốn đăng xuất??", 1, "Có", "Không").equals(FxDialogs.YES)) {
+			Parent pane = null;
+	    	FXMLLoader Loader = new FXMLLoader();
+	    	Loader.setLocation(getClass().getResource("../Application/signIn.fxml"));
+			try {
+				pane = Loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(pane);
+			Stage stage = (Stage) dangxuat.getScene().getWindow();
+			stage.setTitle("Đăng nhập");
+			stage.setResizable(false);				        
+			stage.setScene(scene);
+	   }
 	}
 	
 }

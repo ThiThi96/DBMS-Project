@@ -18,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -44,12 +45,14 @@ public class sinhvien_DeDaDKController implements Initializable  {
 	private Label tenLop;
 	@FXML
 	private ImageView iconUser;
+	@FXML
+	private ComboBox<String> delay;
 	
 	private User user;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		lblTaiKhoan.setAlignment(Pos.TOP_RIGHT);
-		
+		delay.setValue("No delay");
 		TableColumn cMaDe = new TableColumn("Ma de");
 		cMaDe.setMinWidth(70);
 		cMaDe.setMaxWidth(70);

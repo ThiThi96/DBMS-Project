@@ -22,6 +22,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -70,6 +71,9 @@ public class giaovien_ChiTietDeController implements Initializable {
 	@FXML
 	private Button luuThayDoi;
 	@FXML
+	private ComboBox delay;
+	
+	@FXML
 	private TableView<Nhom> tableDS_Nhom = new TableView<Nhom>();
 	@FXML
 	private TableView<User> tableDS_SV = new TableView<User>();
@@ -102,6 +106,7 @@ public class giaovien_ChiTietDeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		tenTK.setAlignment(Pos.TOP_RIGHT);
+		delay.setValue("No delay");
 		
 	}
 	

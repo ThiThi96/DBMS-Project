@@ -87,7 +87,7 @@
 
 #btnQuayve, #btnDangkynhom, #btnHoantat, #btnThemthanhvien, #btnRutnhom, #btnChitietnhom, #btnHuyDKDe, 
 #btnQuayLai, #btnDangKyDe, #btnQuayVeTC, #btnXemDSDeDaDK, #btnQuayVe, #btnThemDe, #btnChiTietDe,
-#btnTaoDeMoi, #btnThemDeChoMon, #btnTaoDe
+#btnTaoDeMoi, #btnThemDeChoMon, #btnTaoDe, #delay
 {
 	-fx-font-family: "Times New Roman";
 	 -fx-font-size: 18px;

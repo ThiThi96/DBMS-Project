@@ -41,6 +41,8 @@ public class adminAddUserController implements Initializable{
 	private Button btnBack;
 	@FXML
 	private Button btnOK;
+	@FXML
+	private ComboBox<String> delay;
 	
 	private Stage previousStage;
 	
@@ -93,6 +95,7 @@ public class adminAddUserController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		setEnabled(false);
+		delay.setValue("No delay");
 		
 		cmbType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 			@Override 

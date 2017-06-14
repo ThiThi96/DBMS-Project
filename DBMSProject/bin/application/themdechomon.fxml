@@ -80,5 +80,13 @@
       <JFXTimePicker fx:id="gioDeadline" defaultColor="#00058f" layoutX="357.0" layoutY="476.0" prefHeight="28.0" prefWidth="132.0" />
       <JFXDatePicker fx:id="ngayBD" defaultColor="#00208f" layoutX="533.0" layoutY="418.0" prefHeight="28.0" prefWidth="240.0" />
       <JFXDatePicker fx:id="ngayDeadline" defaultColor="#001a8f" layoutX="533.0" layoutY="476.0" prefHeight="28.0" prefWidth="240.0" />
+   	  <ComboBox fx:id="delay" layoutX="388.0" layoutY="546.0" prefHeight="31.0" prefWidth="132.0">
+      	<items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Delay" />
+          <String fx:value="No delay" />
+        </FXCollections>
+      </items>
+      </ComboBox>
    </children>
 </AnchorPane>

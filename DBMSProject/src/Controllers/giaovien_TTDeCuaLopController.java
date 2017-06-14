@@ -18,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,6 +44,7 @@ public class giaovien_TTDeCuaLopController implements Initializable{
 	private Button btnThemDe;
 	@FXML
 	private Button btnQuayVe;
+	
 	@FXML
 	private TableView<DeMon> tableCT_De = new TableView<DeMon>();
 	

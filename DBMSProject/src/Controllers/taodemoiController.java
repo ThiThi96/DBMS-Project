@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
@@ -44,12 +45,15 @@ public class taodemoiController implements Initializable {
 	private Button btnQuayLai;
 	@FXML
 	private ImageView iconUser;
+	@FXML
+	private ComboBox<String> delay;
 	
 	private User user;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		tendn.setAlignment(Pos.TOP_RIGHT);
+		delay.setValue("No delay");
 	}
 	
 	public void chonTaoDe(ActionEvent event) {

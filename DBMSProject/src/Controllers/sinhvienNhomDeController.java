@@ -68,10 +68,13 @@ public class sinhvienNhomDeController  implements Initializable {
 	@FXML 
 	private Button btnXemDSDeDaDK;
 	@FXML
+	private ComboBox<String> delay;
+	@FXML
 	private TableView<Nhom> tableNhom = new TableView<Nhom>();
 	
 	private User user;
-	
+	private Nhom nhomSelect;
+	private DeMon deSelect;
 	
 	Nhom n1 = new Nhom("Nhom1","Hai con vit", "sv1", 4 );
 	Nhom n2 = new Nhom("Nhom2","Hai con heo", "sv2", 3 );
@@ -100,14 +103,11 @@ public class sinhvienNhomDeController  implements Initializable {
 	        dm1, dm2, dm3, dm4
 	        );   
 	
-	DeMon deSelect;
-	String maNhomSelect, tenNhomSelect, nhomTruongSelect;
-	int soLuongSelect;
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		tendn.setAlignment(Pos.TOP_RIGHT);
+		delay.setValue("No delay");
 		
 		TableColumn cManhom = new TableColumn("Ma nhom");
 		cManhom.setMinWidth(110);
@@ -144,10 +144,7 @@ public class sinhvienNhomDeController  implements Initializable {
             if (newSelection != null) {
             	this.btnChitietnhom.setDisable(false);
 	        	this.btnRutnhom.setDisable(false);
-            	maNhomSelect = tableNhom.getSelectionModel().getSelectedItem().getMaNhom();
-            	tenNhomSelect = tableNhom.getSelectionModel().getSelectedItem().getTenNhom();
-            	nhomTruongSelect = tableNhom.getSelectionModel().getSelectedItem().getNhomTruong();
-            	soLuongSelect = tableNhom.getSelectionModel().getSelectedItem().getSoLuong();
+	        	nhomSelect = newSelection;
             	
             	//System.out.println(maNhom + "\n" + tenNhom + "\n" + nhomTruong + "\n" + soLuong);
             }
@@ -277,9 +274,9 @@ public class sinhvienNhomDeController  implements Initializable {
 		display.setTextTenDn(user);
 		display.setTextLop(maLop.getText(), tenLop.getText());
 		display.disableEditTenNhom();
-		display.setTenNhom(tenNhomSelect);
-		display.layThongTinNhom(maNhomSelect);
-		display.setVisibleMaNhom(maNhomSelect);
+		display.setTenNhom(nhomSelect.getTenNhom());
+		display.layThongTinNhom(nhomSelect.getMaNhom());
+		display.setVisibleMaNhom(nhomSelect.getMaNhom());
 		Scene scene = new Scene(pane);
 		Stage stage = (Stage) btnDangkynhom.getScene().getWindow();
 		stage.setTitle("Chi tiết nhóm");

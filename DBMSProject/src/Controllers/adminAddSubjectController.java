@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -19,6 +20,8 @@ public class adminAddSubjectController implements Initializable{
 	private TextField txtID;
 	@FXML
 	private TextField txtName;
+	@FXML
+	private ComboBox<String> delay;
 	
 	public void createSubject(MouseEvent e){
 		
@@ -44,6 +47,7 @@ public class adminAddSubjectController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1){
 		txtID.setDisable(true);
+		delay.setValue("No delay");
 	}
 
 }
