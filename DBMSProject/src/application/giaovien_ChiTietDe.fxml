@@ -85,7 +85,7 @@
             <Font name="Times New Roman" size="18.0" />
          </font>1
       </TextArea>
-      <Label layoutX="587.0" layoutY="64.0" text="Danh sách nhóm đã đăng ký">
+      <Label layoutX="450.0" layoutY="64.0" text="Danh sách nhóm đã đăng ký thuộc quản lý của giáo viên">
          <font>
             <Font name="Cambria Bold" size="20.0" />
          </font>
