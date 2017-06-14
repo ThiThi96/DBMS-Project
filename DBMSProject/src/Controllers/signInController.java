@@ -51,7 +51,7 @@ public class signInController implements Initializable{
 			}
 			adminPageController display = Loader.getController();
 			//display.setUser(user);
-			display.setUser(new User(username.getText(), "Thằng Admin", "", "012563577552", "245 HCM", "blabla@gmail.com"));
+			display.setUser(new User(username.getText(), "Thằng Admin", "", "012563577552", "245 HCM", "blabla@gmail.com",0));
 			Scene scene = new Scene(pane);
 			Stage stage = (Stage) btnSignin.getScene().getWindow();
 			stage.setTitle("Admin");
@@ -68,7 +68,7 @@ public class signInController implements Initializable{
 			}
 			giaovienTrangChuController display = Loader.getController();
 			//display.setTextTenDn(user);
-			display.setTextTenDn(new User(username.getText(), "Giáo viên", "", "012563577552", "245 DN", "gv@gmail.com"));
+			display.setTextTenDn(new User(username.getText(), "Giáo viên", "", "012563577552", "245 DN", "gv@gmail.com",1));
 			Scene scene = new Scene(pane);
 			Stage stage = (Stage) btnSignin.getScene().getWindow();
 			stage.setTitle("Giáo viên");
@@ -85,7 +85,7 @@ public class signInController implements Initializable{
 			}
 			sinhvienTrangchuController display = Loader.getController();
 			//display.setTextTenDn(user);
-			display.setTextTenDn(new User(username.getText(), "Sinh viên", "14", "012563577552", "245 DL", "sv@gmail.com"));
+			display.setTextTenDn(new User(username.getText(), "Sinh viên", "14", "012563577552", "245 DL", "sv@gmail.com", 2));
 			Scene scene = new Scene(pane);
 			Stage stage = (Stage) btnSignin.getScene().getWindow();
 			stage.setTitle("Sinh viên");

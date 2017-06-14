@@ -64,6 +64,8 @@ public class giaovien_ChiTietDeController implements Initializable {
 	@FXML
 	private TextField txtSLDaDK = new TextField();
 	@FXML
+	private TextField txtSLDangQuanLy = new TextField();
+	@FXML
 	private Button btnQuayVe;
 	@FXML
 	private Button luuThayDoi;
@@ -80,10 +82,10 @@ public class giaovien_ChiTietDeController implements Initializable {
 	Nhom n3 = new Nhom("Nhom3","Hai con cho", "sv3", 2 );
 	Nhom n4 = new Nhom("Nhom4","Hai con ga", "sv4", 5);
 	
-	User u1 = new User("SV1","Thang thu nhat", "", "","","" );
-	User u2 = new User("SV2", "Ten dua thu 2",  "", "","","" );
-	User u3 = new User("Sv3","Ten dua thu 3", "", "","","" );
-	User u4 = new User("SV4","Ten dua thu 4",  "", "","","" );
+	User u1 = new User("SV1","Thang thu nhat", "", "","","", 2 );
+	User u2 = new User("SV2", "Ten dua thu 2",  "", "","","" , 2);
+	User u3 = new User("Sv3","Ten dua thu 3", "", "","","", 2 );
+	User u4 = new User("SV4","Ten dua thu 4",  "", "","","", 2 );
 	
 	//Nhom dang ky de ma giao vien quan ly
 	private final ObservableList<Nhom> data_Nhom =

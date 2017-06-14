@@ -178,8 +178,8 @@ public class adminPageController implements Initializable {
 	   }
 	   
 	   public ObservableList<User> getUserList(){
-		   User user1 = new User("hoho", "haha", "hihi", "huc huc", "hic hic", "hô hô");
-		   User user2 = new User("hoho1", "haha", "hihi", "huc huc", "hic hic", "haha");
+		   User user1 = new User("hoho", "haha", "hihi", "huc huc", "hic hic", "hô hô", 1);
+		   User user2 = new User("hoho1", "haha", "hihi", "huc huc", "hic hic", "haha", 2);
 		   Vector<User> u= new Vector<User>();
 		   u.add(user1);
 		   u.add(user2);
