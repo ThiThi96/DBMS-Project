@@ -65,10 +65,10 @@ public class TeamConnection extends AbstractConnection{
 	}
 
 	//lấy danh sách nhóm được quản lý bởi gv
-	public DSNhom getTeamUnderControllOf(String teacherID, String subjectID, String exID, int teamNum){
+	public Vector<Object> getTeamUnderControllOf(String teacherID, String subjectID, String exID, int teamNum){
 		
-		DSNhom info = new DSNhom();
-		Vector<Vector<String>> teamInfo = new Vector<Vector<String>>();
+		Vector<Object> info = new Vector<Object>();
+		Vector<Nhom> teamList = new Vector<Nhom>();
 		try {
 			CallableStatement statement = con.prepareCall("{call DSQuanLyCuaGV(?, ?, ?, ?)}");
 			statement.setString(1, teacherID);
@@ -96,14 +96,14 @@ public class TeamConnection extends AbstractConnection{
 					i++;
 					System.out.print(s+" ");
 				}
-				teamInfo.add(Info);
+				teamList.add(new Nhom(Info));
 				i= 1;
 				
 			}
 			
 			teamNum = statement.getInt(4);
-			info = new DSNhom(teamInfo, teamNum);
-
+			info.add(teamList);
+			info.add(teamNum);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

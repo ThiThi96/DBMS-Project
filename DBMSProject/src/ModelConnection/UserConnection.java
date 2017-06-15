@@ -218,10 +218,57 @@ public class UserConnection extends AbstractConnection{
 	}
 
 	//tìm danh sách sinh viên được quản lý bởi giáo viên nào đó
-	public Vector<User> getUserUnderControllOf(){
+	//trả về danh sách sinh viên và số lượng sinh viên
+	public Vector<Object> getUserUnderControllOf(String teacherID, String subjectID, String exID, int delay){
+		Vector<Object> info = new Vector<Object>();
 		Vector<User> uList = new Vector<User>();
+		try {
+			CallableStatement statement = con.prepareCall("{call DSDKDeCaNhan (?, ?, ?, ?)}");
+			statement.setString(1, teacherID);
+			statement.setString(2, subjectID);
+			statement.setString(3, exID);
+			statement.registerOutParameter(4, java.sql.Types.INTEGER);
+			statement.setInt(4, delay);
+			
+			boolean res = statement.execute();
 		
-		return uList;
+		
+			int i=1;
+			if (!res)
+			{
+				return null;
+			}
+			int number = statement.getInt(4);
+			ResultSet rs = statement.getResultSet();
+			ResultSetMetaData rsmd = rs.getMetaData();
+
+			int columnsNumber = rsmd.getColumnCount();
+			
+
+			while (rs.next())
+			{
+				Vector<String> Info = new Vector<String>();
+				while (i!= columnsNumber + 1)
+				{
+					String s = rs.getString(i);
+					Info.addElement(s);
+					if (Info.get(i-1) == null)
+						Info.set(i-1, "");
+					i++;
+					System.out.print(s+" ");
+				}
+				i= 1;
+				uList.addElement(new User(Info));
+			}
+			info.add(uList);
+			info.addElement(number);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			FxDialogs.showError("Lỗi", e.getMessage());
+		}
+		return info;
 	}
 
 	

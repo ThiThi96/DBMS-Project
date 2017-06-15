@@ -150,6 +150,7 @@ public class SubjectConnection extends AbstractConnection{
 		return info;
 	}
 
+	//thêm môn học mới
 	public int createSubject(String subjectName, int delay){
 		int res = 0;
 		try {

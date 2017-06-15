@@ -23,17 +23,17 @@ public class SubClassConnection extends AbstractConnection{
 	}
 
 	public static void main(String[] args){
-		 
-			try {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-			    Date parsedDate;
-				parsedDate = dateFormat.parse("");
-				Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-				System.out.println(timestamp.toString());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
+				Vector<String> list = new Vector<String>();
+				list.add("hô hô");
+				list.addElement("hehe");
+				Vector<Object> l = new Vector<Object>();
+				l.add(list);
+				int i = list.size();
+				l.add(i);
+				System.out.println(((Vector<String>)l.get(0)).get(0));
+				System.out.println(l.get(1));
+
 		    
 	}
 	
