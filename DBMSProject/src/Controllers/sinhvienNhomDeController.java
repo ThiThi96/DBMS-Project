@@ -26,8 +26,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -157,8 +159,8 @@ public class sinhvienNhomDeController  implements Initializable {
 		cMaDe.setMaxWidth(60);
 		
 		TableColumn cMoTa = new TableColumn("Mo ta");
-		cMoTa.setMinWidth(480);
-		cMoTa.setMaxWidth(480);
+		cMoTa.setMinWidth(460);
+		cMoTa.setMaxWidth(460);
 		
 		TableColumn cLoaiDA = new TableColumn("Loai do an");
 		cLoaiDA.setMinWidth(90);
@@ -191,6 +193,24 @@ public class sinhvienNhomDeController  implements Initializable {
 	    tableDeConHanDK.setItems(data_de);
 	 
 	    tableDeConHanDK.getColumns().addAll(cMaDe, cMoTa, cLoaiDA, cLoaiDe, cNgaybd, cDeadline);
+	    
+	    cMoTa.setCellFactory
+	    (
+	      column ->
+	       {
+	         return new TableCell<DeMon, String>()
+	          {
+	            @Override
+	            protected void updateItem(String item, boolean empty)
+	             {
+	            	
+	                super.updateItem(item, empty);
+	                setText( item );
+	                setTooltip(new Tooltip(item));
+	             }
+	          };
+	       });
+	    
 	    tableDeConHanDK.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
             	this.btnDangKyDe.setDisable(false);

@@ -20,8 +20,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -59,7 +61,7 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		
 		TableColumn cMoTa = new TableColumn("Mo ta");
 		cMoTa.setMinWidth(370);
-//		cMoTa.setMaxWidth(550);
+		cMoTa.setMaxWidth(370);
 		
 		TableColumn cLoaiDA = new TableColumn("Loai do an");
 		cLoaiDA.setMinWidth(100);
@@ -84,7 +86,7 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		cMaDe.setCellValueFactory(new PropertyValueFactory<DeMon, String>("de"));
 		cMoTa.setCellValueFactory(new PropertyValueFactory<DeMon, String>("moTa"));
 		
-		cLoaiDA.setCellValueFactory(new PropertyValueFactory<DeMon, Byte >("loaiDA"));
+		cLoaiDA.setCellValueFactory(new PropertyValueFactory<DeMon, String >("loaiDA"));
 		cLoaiDe.setCellValueFactory(new PropertyValueFactory<DeMon, String >("loaiDeHien"));
 		cNhom.setCellValueFactory(new PropertyValueFactory<DeMon, Nhom>("maNhom"));
 		cDeadline.setCellValueFactory(new PropertyValueFactory<DeMon, Date>("deadline"));
@@ -92,8 +94,26 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		
 	    ObservableList<DeMon> list = getDeDaDKList();
 	    tableDeDaDK.setItems(list);	 
-	 
+	    
 	    tableDeDaDK.getColumns().addAll(cMaDe, cMoTa, cLoaiDA, cLoaiDe, cDeadline, cNhom, cGVPT);
+	    
+	    	cMoTa.setCellFactory
+		    (
+		      column ->
+		       {
+		         return new TableCell<DeMon, String>()
+		          {
+		            @Override
+		            protected void updateItem(String item, boolean empty)
+		             {
+		            	
+		                super.updateItem(item, empty);
+		                setText( item );
+		                setTooltip(new Tooltip(item));
+		             }
+		          };
+		       });
+	   	    
 	    tableDeDaDK.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
             	this.btnHuyDKDe.setDisable(false);
