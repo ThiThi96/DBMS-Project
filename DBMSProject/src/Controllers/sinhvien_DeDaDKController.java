@@ -58,8 +58,8 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		cMaDe.setMaxWidth(70);
 		
 		TableColumn cMoTa = new TableColumn("Mo ta");
-		cMoTa.setMinWidth(500);
-		cMoTa.setMaxWidth(500);
+		cMoTa.setMinWidth(370);
+//		cMoTa.setMaxWidth(550);
 		
 		TableColumn cLoaiDA = new TableColumn("Loai do an");
 		cLoaiDA.setMinWidth(100);
@@ -69,29 +69,31 @@ public class sinhvien_DeDaDKController implements Initializable  {
 		cLoaiDe.setMinWidth(85);
 		cLoaiDe.setMaxWidth(85);
 		
-//		TableColumn cNhom = new TableColumn("NhÃ³m");
-//		cNhom.setMinWidth(100);
+		TableColumn cNhom = new TableColumn("Nhom");
+		cNhom.setMinWidth(50);
+		cNhom.setMaxWidth(50);
 		
-		TableColumn cGVPT = new TableColumn("Giao vien phu trach");
-		cGVPT.setMinWidth(100);
-		cGVPT.setMaxWidth(100);
+		TableColumn cGVPT = new TableColumn("GV phu trach");
+		cGVPT.setMinWidth(120);
+		cGVPT.setMaxWidth(120);
 		
 		TableColumn cDeadline = new TableColumn("Deadline");
-		cDeadline.setMinWidth(100);
-		cDeadline.setMaxWidth(100);
+		cDeadline.setMinWidth(150);
+		cDeadline.setMaxWidth(150);
 		
 		cMaDe.setCellValueFactory(new PropertyValueFactory<DeMon, String>("de"));
 		cMoTa.setCellValueFactory(new PropertyValueFactory<DeMon, String>("moTa"));
+		
 		cLoaiDA.setCellValueFactory(new PropertyValueFactory<DeMon, Byte >("loaiDA"));
 		cLoaiDe.setCellValueFactory(new PropertyValueFactory<DeMon, String >("loaiDeHien"));
-//		cNhom.setCellValueFactory(new PropertyValueFactory<DeMon, Nhom>("Nhom"));
+		cNhom.setCellValueFactory(new PropertyValueFactory<DeMon, Nhom>("maNhom"));
 		cDeadline.setCellValueFactory(new PropertyValueFactory<DeMon, Date>("deadline"));
 		cGVPT.setCellValueFactory(new PropertyValueFactory<DeMon, User>("giaoVienPhuTrach"));
 		
 	    ObservableList<DeMon> list = getDeDaDKList();
-	    tableDeDaDK.setItems(list);
+	    tableDeDaDK.setItems(list);	 
 	 
-	    tableDeDaDK.getColumns().addAll(cMaDe, cMoTa, cLoaiDA, cLoaiDe, cGVPT, cDeadline);
+	    tableDeDaDK.getColumns().addAll(cMaDe, cMoTa, cLoaiDA, cLoaiDe, cDeadline, cNhom, cGVPT);
 	    tableDeDaDK.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
             	this.btnHuyDKDe.setDisable(false);
@@ -102,10 +104,10 @@ public class sinhvien_DeDaDKController implements Initializable  {
 	}
 	
 	private ObservableList<DeMon> getDeDaDKList() {
-		DeMon dm1 = new DeMon("De001", "CTT001", "Cuoi ky", true, "Hom nay la mot ngay khong dep troi gi ca", 20, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Hoang Anh Tu");
-		DeMon dm2 = new DeMon("De002", "CTT001", "Giua ky", true, "Troi khong nang khong mo hoho", 10, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Trần Minh Triết" );
-		DeMon dm3 = new DeMon("De003", "CTT001", "Bai tap", true, "Chan qua di mat ", 20, 10, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Hồng" );
-		DeMon dm4 = new DeMon("De004", "CTT001", "Bai tap", true, "Troi oi la troi", 10, 8, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Nhung" );
+		DeMon dm1 = new DeMon("De001", "CTT001", "Cuoi ky", true, "Hom nay la mot ngay khong dep troi gi ca", 20, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Hoang Anh Tu", "");
+		DeMon dm2 = new DeMon("De002", "CTT001", "Giua ky", false, "Troi khong nang khong mo hoho", 10, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Minh Thu", "N001");
+		DeMon dm3 = new DeMon("De003", "CTT001", "Bai tap", true, "Chan qua di mat ", 20, 10, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Thu Huong", "");
+		DeMon dm4 = new DeMon("De004", "CTT001", "Bai tap", false, "Troi oi la troi", 10, 8, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Hai Anh", "N003");
 		return FXCollections.observableArrayList(
 		        dm1, dm2, dm3, dm4
 		        ); 

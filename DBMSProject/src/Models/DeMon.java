@@ -15,8 +15,9 @@ public class DeMon {
 	private String deadline;
 	private String giaoVienPhuTrach;
 	private String loaiDeHien;
+	private String maNhom;
 	
-	public DeMon(String de, String mon, String loaiDA, boolean loaiDe, String moTa, int slDangKyTD, int slDangKy, int slSVNhom, String ngayBDDangKy, String deadline, String gv) {
+	public DeMon(String de, String mon, String loaiDA, boolean loaiDe, String moTa, int slDangKyTD, int slDangKy, int slSVNhom, String ngayBDDangKy, String deadline, String gv, String nhom) {
 		super();
 		this.de = de;
 		this.mon = mon;
@@ -29,6 +30,7 @@ public class DeMon {
 		this.ngayBDDangKy = ngayBDDangKy;
 		this.deadline = deadline;
 		this.giaoVienPhuTrach = gv;
+		this.maNhom = nhom;
 		this.loaiDe = loaiDe;
 		if(loaiDe)
 			this.loaiDeHien = "Cá nhân";
@@ -113,11 +115,24 @@ public class DeMon {
 	public void setDeadline(String deadline) {
 		this.deadline = deadline;
 	}
-	//giao vien phu trach
+	//Bang danh sach de con han dang ky va bang giao vien TTDe cua lop: rong
+	//Bang xem danh sach de da dang ky:
+	//		- Neu la de ca nhan: hien giao vien phu trach de
+	//		- Neu la de nhom: hien giao vien phu trach nhom
 	public String getGiaoVienPhuTrach() {
 		return giaoVienPhuTrach;
 	}
 	public void setGiaoVienPhuTrach(String gv) {
 		this.giaoVienPhuTrach = gv;
+	}
+	//Bang danh sach de con han dang ky va bang giao vien TTDe cua lop: rong
+	//Bang xem danh sach de da dang ky:
+	//		- Neu la de ca nhan: rong
+	//		- Neu la de nhom: hien ma nhom
+	public String getMaNhom() {
+		return maNhom;
+	}
+	public void setMaNhom(String ma) {
+		this.maNhom = ma;
 	}
 }

@@ -81,10 +81,10 @@ public class sinhvienNhomDeController  implements Initializable {
 	Nhom n3 = new Nhom("Nhom3","Hai con cho", "sv3", 2 );
 	Nhom n4 = new Nhom("Nhom4","Hai con gaÂ ", "sv4", 5);
 	
-	DeMon dm1 = new DeMon("De001", "CTT001", "Cuoi ky", false, "Hom nay la mot ngay khong dep troi gi ca", 20, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Hoang Anh Tu");
-	DeMon dm2 = new DeMon("De002", "CTT001", "Giua ky", true, "Troi khong nang khong mo hoho", 10, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Trần Minh Triết" );
-	DeMon dm3 = new DeMon("De003", "CTT001", "Bai tap", false, "Chan qua di mat ", 20, 10, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Hồng" );
-	DeMon dm4 = new DeMon("De004", "CTT001", "Bai tap", true, "Troi oi la troi", 10, 8, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "Nguyễn Nhung" );
+	DeMon dm1 = new DeMon("De001", "CTT001", "Cuoi ky", true, "Hom nay la mot ngay khong dep troi gi ca", 20, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "", "");
+	DeMon dm2 = new DeMon("De002", "CTT001", "Giua ky", false, "Troi khong nang khong mo hoho", 10, 5, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "", "N001");
+	DeMon dm3 = new DeMon("De003", "CTT001", "Bai tap", true, "Chan qua di mat ", 20, 10, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "", "");
+	DeMon dm4 = new DeMon("De004", "CTT001", "Bai tap", false, "Troi oi la troi", 10, 8, 7, "25-05-2017 20:00:00", "30-06-2017 23:55:00", "", "N003");
 	
 	//Nhom ma thang dang nhap lam nhom truong
 	ObservableList<Nhom> nhomTruongCua = 
@@ -153,32 +153,32 @@ public class sinhvienNhomDeController  implements Initializable {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////
         TableColumn cMaDe = new TableColumn("Ma de");
-		cMaDe.setMinWidth(70);
-		cMaDe.setMaxWidth(70);
+		cMaDe.setMinWidth(60);
+		cMaDe.setMaxWidth(60);
 		
 		TableColumn cMoTa = new TableColumn("Mo ta");
-		cMoTa.setMinWidth(500);
-		cMoTa.setMaxWidth(500);
+		cMoTa.setMinWidth(480);
+		cMoTa.setMaxWidth(480);
 		
 		TableColumn cLoaiDA = new TableColumn("Loai do an");
-		cLoaiDA.setMinWidth(100);
-		cLoaiDA.setMaxWidth(100);
+		cLoaiDA.setMinWidth(90);
+		cLoaiDA.setMaxWidth(90);
 		
 		TableColumn cLoaiDe = new TableColumn("Loai de");
-		cLoaiDe.setMinWidth(85);
-		cLoaiDe.setMaxWidth(85);
+		cLoaiDe.setMinWidth(70);
+		cLoaiDe.setMaxWidth(70);
 		
 		TableColumn cNgaybd = new TableColumn("Ngay bd");
-		cNgaybd.setMinWidth(100);
-		cNgaybd.setMaxWidth(100);
+		cNgaybd.setMinWidth(130);
+		cNgaybd.setMaxWidth(130);
 		
-		TableColumn cGVPT = new TableColumn("Giao vien phu trach");
-		cGVPT.setMinWidth(100);
-		cGVPT.setMaxWidth(100);
+//		TableColumn cGVPT = new TableColumn("Giao vien phu trach");
+//		cGVPT.setMinWidth(100);
+//		cGVPT.setMaxWidth(100);
 		
 		TableColumn cDeadline = new TableColumn("Deadline");
-		cDeadline.setMinWidth(100);
-		cDeadline.setMaxWidth(100);
+		cDeadline.setMinWidth(130);
+		cDeadline.setMaxWidth(130);
 		
 		cMaDe.setCellValueFactory(new PropertyValueFactory<DeMon, String>("de"));
 		cMoTa.setCellValueFactory(new PropertyValueFactory<DeMon, String>("moTa"));
@@ -186,11 +186,11 @@ public class sinhvienNhomDeController  implements Initializable {
 		cLoaiDe.setCellValueFactory(new PropertyValueFactory<DeMon, String >("loaiDeHien"));
 		cNgaybd.setCellValueFactory(new PropertyValueFactory<DeMon, String>("ngayBDDangKy"));
 		cDeadline.setCellValueFactory(new PropertyValueFactory<DeMon, Date>("deadline"));
-		cGVPT.setCellValueFactory(new PropertyValueFactory<DeMon, User>("giaoVienPhuTrach"));
+//		cGVPT.setCellValueFactory(new PropertyValueFactory<DeMon, User>("giaoVienPhuTrach"));
 		
 	    tableDeConHanDK.setItems(data_de);
 	 
-	    tableDeConHanDK.getColumns().addAll(cMaDe, cMoTa, cLoaiDA, cLoaiDe, cGVPT, cNgaybd, cDeadline);
+	    tableDeConHanDK.getColumns().addAll(cMaDe, cMoTa, cLoaiDA, cLoaiDe, cNgaybd, cDeadline);
 	    tableDeConHanDK.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
             	this.btnDangKyDe.setDisable(false);
