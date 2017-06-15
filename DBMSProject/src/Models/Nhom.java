@@ -9,7 +9,14 @@ public class Nhom {
     //SinhVien
     private String nhomTruong;
     private int soLuong;
-    //private Vector<SinhVien> thanhVien;
+    //private Vector<User> thanhVien;
+    
+    public Nhom(Vector<String> info){
+    	maNhom = info.get(0);
+    	tenNhom = info.get(1);
+    	nhomTruong = info.get(2);
+    	soLuong = Integer.parseInt(info.get(3));
+    }
 
     public Nhom(String ma, String ten, String nt, int sl) {
     	this.maNhom = ma;

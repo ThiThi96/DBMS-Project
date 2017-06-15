@@ -1,13 +1,12 @@
 package Models;
 
 import java.util.Date;
+import java.util.Vector;
 
-public class DeMon {
-	protected String de;
-	protected String mon;
-	protected String loaiDA;
-	protected boolean loaiDe;
-	protected String moTa;
+public class DeMon extends De {
+	private String mon;
+	private String loaiDA;
+	private boolean loaiDe;
 	private int slDangKyTD;
 	private int slDangKy;
 	private int slSVNhom;
@@ -19,7 +18,7 @@ public class DeMon {
 	
 	public DeMon(String de, String mon, String loaiDA, boolean loaiDe, String moTa, int slDangKyTD, int slDangKy, int slSVNhom, String ngayBDDangKy, String deadline, String gv, String nhom) {
 		super();
-		this.de = de;
+		this.maDe = de;
 		this.mon = mon;
 		this.loaiDA = loaiDA;
 		this.loaiDe = loaiDe;
@@ -33,16 +32,30 @@ public class DeMon {
 		this.maNhom = nhom;
 		this.loaiDe = loaiDe;
 		if(loaiDe)
-			this.loaiDeHien = "C· nh‚n";
+			this.loaiDeHien = "C√° nh√¢n";
 		else
-			this.loaiDeHien = "NhÛm";
+			this.loaiDeHien = "Nh√≥m";
 	}
+	
+	public DeMon(Vector<Object> info){
+		maDe = (String) info.get(0);
+		moTa = (String) info.get(1);
+		mon = (String) info.get(2);
+		loaiDeHien = (String) info.get(3);
+		loaiDA = (String) info.get(4);
+		ngayBDDangKy = (String) info.get(5);
+		slDangKyTD = (int) info.get(6);
+		slDangKy = (int) info.get(7);
+		slSVNhom = (int) info.get(8);
+		deadline = (String) info.get(9);
+	}
+	
 	//ma de
 	public String getDe() {
-		return de;
+		return maDe;
 	}
 	public void setDe(String de) {
-		this.de = de;
+		this.maDe = de;
 	}
 	//ma mon hoc
 	public String getMon() {
@@ -65,9 +78,9 @@ public class DeMon {
 	public void setLoaiDe(boolean loaiDe) {
 		this.loaiDe = loaiDe;
 		if(loaiDe)
-			this.loaiDeHien = "C· nh‚n";
+			this.loaiDeHien = "C√° nh√¢n";
 		else
-			this.loaiDeHien = "NhÛm";
+			this.loaiDeHien = "Nh√≥m";
 			
 	}
 	public String getLoaiDeHien() {

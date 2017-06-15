@@ -1,5 +1,7 @@
 package Models;
 
+import java.util.Vector;
+
 public class Mon {
 
     private String maLop;
@@ -8,6 +10,11 @@ public class Mon {
     public Mon(String maLop, String tenLop) {
         this.maLop = maLop;
         this.tenLop = tenLop;
+    }
+    
+    public Mon(Vector<String> info){
+    	maLop = info.get(0);
+    	tenLop = info.get(1);
     }
 
     public String getMalop() {
@@ -25,5 +32,6 @@ public class Mon {
     public void setTenlop(String tenLop) {
         this.tenLop = tenLop;
     }
+    
     
 }
